@@ -1,0 +1,412 @@
+#goldschmidthappens
+Batters
+Avail,Player,HR,RBI,R,AB,Salary,SB,BA,Rank,
+#goldschmidthappens,Dansby Swanson SS | ATL ,6,51,59,488,2,3,0.232,289
+#goldschmidthappens,Robinson Cano 2B | SEA ,23,97,79,592,16,1,0.280,67
+#goldschmidthappens,"Dustin Pedroia 2B | BOS ",7,62,46,406,5,4,0.293,207
+#goldschmidthappens,David Peralta RF | ARI ,14,57,82,525,8,8,0.293,94
+#goldschmidthappens,Eric Thames 1B | MIL ,31,63,83,469,1,4,0.247,84
+#goldschmidthappens,"Corey Seager SS | LAD ",22,77,85,539,29,4,0.295,65
+#goldschmidthappens,Paul Goldschmidt 1B | ARI ,36,120,117,558,40,18,0.297,4
+#goldschmidthappens,Jorge Alfaro C | PHI ,5,14,12,107,1,0,0.318,491
+#goldschmidthappens,Addison Russell SS | CHC ,12,43,52,352,4,2,0.239,271
+#goldschmidthappens,Justin Bour 1B | PHI,25,83,52,377,3,1,0.289,96
+#goldschmidthappens,Jason Heyward RF | CHC ,11,59,59,432,5,4,0.259,201
+#goldschmidthappens,Ramon Laureano RF | OAK ,0,0,0,0,1,0,0.000,9999
+#goldschmidthappens,Jurickson Profar LF | TEX ,0,5,8,58,2,1,0.172,766
+#goldschmidthappens,Scott Schebler RF | CIN ,30,67,63,473,3,5,0.233,121
+#goldschmidthappens,Joc Pederson CF | LAD ,11,35,44,273,1,4,0.212,318
+#goldschmidthappens,Tucker Barnhart C | CIN ,7,44,26,370,1,4,0.270,315
+#goldschmidthappens,"Christian Villanueva 3B | SD ",4,7,5,32,8,0,0.344,606
+,TOTALS,244,884,872,6051,130,63,0.268,
+Pitchers
+Avail,Player,Salary,ERA,WHIP,INN,K,S,Rank,
+#goldschmidthappens,Tyler Skaggs SP | LAA ,1,4.55,1.39,85.0,76,0,558
+#goldschmidthappens,"Johnny Cueto SP | SF ",11,4.52,1.45,147.3,136,0,372
+#goldschmidthappens,Matt Shoemaker SP | LAA ,1,4.52,1.30,77.7,69,0,416
+#goldschmidthappens,Touki Toussaint SP | ATL,1,0.00,0.00,0.0,0,0,9999
+#goldschmidthappens,Adam Ottavino RP | COL,1,5.06,1.63,53.3,63,0,661
+#goldschmidthappens,Cole Hamels SP | CHC ,1,4.20,1.20,148.0,105,0,259
+#goldschmidthappens,Wade LeBlanc RP | SEA ,1,4.50,1.19,68.0,54,1,428
+#goldschmidthappens,Miles Mikolas SP | STL ,8,0.00,0.00,0.0,0,0,9999
+#goldschmidthappens,"Alex Reyes SP | STL ",3,0.00,0.00,0.0,0,0,839
+#goldschmidthappens,"Sean Manaea SP | OAK ",5,4.37,1.40,158.7,140,0,278
+#goldschmidthappens,Wade Miley SP | MIL ,1,5.61,1.73,157.3,142,0,819
+#goldschmidthappens,Lance Lynn SP | NYY ,1,3.43,1.23,186.3,153,0,170
+#goldschmidthappens,Brett Anderson SP | OAK ,1,6.34,1.70,55.3,38,0,1009
+,TOTALS,36,4.54,1.40,1137.0,976,1,
+Big Dig
+Batters
+Avail,Player,HR,RBI,R,AB,Salary,SB,BA,Rank,
+Big Dig,Evan Longoria 3B | SF ,20,86,71,613,1,6,0.261,90
+Big Dig,Freddie Freeman 1B | ATL ,28,71,84,440,38,8,0.307,42
+Big Dig,Brandon Belt 1B | SF ,18,51,63,382,1,3,0.241,196
+Big Dig,Austin Romine C | NYY,2,21,19,229,1,0,0.218,583
+Big Dig,Francisco Arcia C | LAA ,0,0,0,0,1,0,0.000,9999
+Big Dig,Ian Kinsler 2B | BOS ,22,52,90,551,1,14,0.236,98
+Big Dig,Andrew Benintendi LF | BOS ,20,90,84,573,30,20,0.271,39
+Big Dig,Ryan Braun LF | MIL ,17,52,58,380,16,12,0.268,146
+Big Dig,Javier Baez 2B | CHC ,23,75,75,469,15,10,0.273,76
+Big Dig,"Buster Posey C | SF ",12,67,62,494,23,6,0.320,100
+Big Dig,Kole Calhoun RF | LAA,19,71,77,569,1,5,0.244,132
+Big Dig,Mike Trout CF | LAA ,33,72,92,402,47,22,0.306,17
+Big Dig,DJ LeMahieu 2B | COL,8,64,95,609,16,6,0.310,81
+Big Dig,Hunter Renfroe RF | SD ,26,58,51,445,3,3,0.232,184
+Big Dig,"Jesse Winker RF | CIN ",7,15,21,121,1,1,0.297,430
+Big Dig,Chris Taylor CF | LAD,21,72,85,514,1,17,0.288,48
+,TOTALS,276,917,1027,6791,196,133,0.272,
+Pitchers
+Avail,Player,Salary,ERA,WHIP,INN,K,S,Rank,
+Big Dig,Hyun-Jin Ryu SP | LAD ,2,3.77,1.37,126.7,116,1,350
+Big Dig,Robbie Ray SP | ARI ,2,2.89,1.15,162.0,218,0,59
+Big Dig,Drew Steckenrider RP | MIA,1,2.34,1.38,34.7,54,1,477
+Big Dig,Framber Valdez RP | HOU ,1,0.00,0.00,0.0,0,0,9999
+Big Dig,Ty Buttrey RP | LAA ,1,0.00,0.00,0.0,0,0,9999
+Big Dig,Vince Velasquez SP | PHI ,1,5.12,1.50,72.0,68,0,669
+Big Dig,Jim Johnson RP | LAA ,1,5.56,1.48,56.7,61,22,308
+Big Dig,Tommy Hunter RP | PHI,1,2.61,0.97,58.7,64,1,333
+Big Dig,Adam Wainwright SP | STL ,1,5.11,1.50,123.3,96,0,400
+Big Dig,"Taijuan Walker SP | ARI ",4,3.49,1.33,157.3,146,0,238
+Big Dig,Chase Anderson SP | MIL ,1,2.74,1.09,141.3,133,0,116
+Big Dig,Noah Syndergaard SP | NYM ,30,2.97,1.05,30.3,34,0,513
+Big Dig,"Clay Buchholz SP | ARI ",1,12.27,2.59,7.3,5,0,1063
+Big Dig,Clayton Kershaw SP | LAD ,50,2.31,0.95,175.0,202,0,19
+,TOTALS,97,3.50,1.24,1145.3,1197,25,
+Black Flag
+Batters
+Avail,Player,HR,RBI,R,AB,Salary,SB,BA,Rank,
+Black Flag,Eduardo Escobar 3B | ARI ,21,73,62,457,22,5,0.254,130
+Black Flag,Dee Gordon 2B | SEA ,2,33,114,653,39,60,0.308,13
+Black Flag,Wil Myers 1B | SD ,30,74,80,567,20,20,0.243,56
+Black Flag,Ian Desmond LF | COL ,7,40,47,339,2,15,0.274,217
+Black Flag,"Franchy Cordero CF | SD ",3,9,15,92,4,1,0.228,582
+Black Flag,"Travis d'Arnaud C | NYM ",16,57,39,348,2,0,0.244,254
+Black Flag,Robinson Chirinos C | TEX ,17,38,46,263,2,1,0.255,252
+Black Flag,Evan Gattis C | HOU,12,55,41,300,4,0,0.263,255
+Black Flag,Anthony Rizzo 1B | CHC ,32,109,99,572,34,10,0.273,21
+Black Flag,Travis Shaw 3B | MIL ,31,101,84,538,10,10,0.273,30
+Black Flag,Xander Bogaerts SS | BOS ,10,62,94,571,21,15,0.273,85
+Black Flag,Eugenio Suarez 3B | CIN ,26,82,87,534,4,4,0.260,72
+Black Flag,A.J. Pollock CF | ARI ,14,49,73,425,24,20,0.266,105
+Black Flag,Shin-Soo Choo RF | TEX ,22,78,96,544,2,12,0.261,60
+Black Flag,Jose Altuve 2B | HOU ,24,81,112,590,44,32,0.346,5
+Black Flag,Michael Conforto LF | NYM ,27,68,72,373,1,2,0.279,86
+,TOTALS,294,1009,1161,7166,235,207,0.274,
+Pitchers
+Avail,Player,Salary,ERA,WHIP,INN,K,S,Rank,
+Black Flag,Chris Archer SP | PIT ,14,4.08,1.26,201.0,249,0,140
+Black Flag,Will Smith RP | SF,1,0.00,0.00,0.0,0,0,839
+Black Flag,Justin Verlander SP | HOU ,10,3.36,1.17,206.0,219,0,70
+Black Flag,Kirby Yates RP | SD ,1,3.97,1.11,56.7,88,1,341
+Black Flag,Madison Bumgarner SP | SF ,30,3.32,1.09,111.0,101,0,285
+Black Flag,A.J. Minter RP | ATL,2,3.00,1.00,15.0,26,0,594
+Black Flag,Zack Godley SP | ARI ,11,3.37,1.14,155.0,165,0,167
+Black Flag,Patrick Corbin SP | ARI ,7,4.03,1.42,189.7,178,0,209
+Black Flag,Craig Kimbrel RP | BOS ,19,1.44,0.68,69.0,126,35,45
+Black Flag,Jose Urena SP | MIA ,1,3.82,1.27,169.7,113,0,212
+Black Flag,Rick Porcello SP | BOS ,4,4.65,1.40,203.3,181,0,291
+,TOTALS,100,3.73,1.23,1376.3,1446,36,
+Boys of Summer
+Batters
+Avail,Player,HR,RBI,R,AB,Salary,SB,BA,Rank,
+Boys of Summer,Albert Almora CF | CHC,8,46,39,299,2,1,0.298,266
+Boys of Summer,Nick Markakis RF | ATL,8,76,76,593,1,0,0.275,155
+Boys of Summer,Willie Calhoun LF | TEX,1,4,3,34,1,0,0.265,745
+Boys of Summer,Shohei Ohtani SP | LAA ,0,0,0,0,19,0,0.000,9999
+Boys of Summer,Derek Dietrich 3B | MIA,13,53,56,406,3,0,0.249,239
+Boys of Summer,Gleyber Torres SS | NYY ,0,0,0,0,2,0,0.000,9999
+Boys of Summer,Brian Anderson 3B | MIA ,0,8,11,84,2,0,0.262,647
+Boys of Summer,Daniel Descalso 2B | ARI ,10,51,47,344,3,4,0.233,273
+Boys of Summer,Ryan Zimmerman 1B | WAS ,36,108,90,524,10,1,0.303,20
+Boys of Summer,Starlin Castro 2B | MIA ,16,63,66,443,5,2,0.300,123
+Boys of Summer,"Jake Lamb 3B | ARI ",30,105,89,536,13,6,0.248,40
+Boys of Summer,Jed Lowrie 2B | OAK ,14,69,86,567,3,0,0.277,114
+Boys of Summer,Yasmani Grandal C | LAD,22,58,50,438,5,0,0.247,199
+Boys of Summer,Matt Adams 1B | STL,20,65,46,339,2,0,0.274,174
+Boys of Summer,Elias Diaz C | PIT ,1,19,18,188,1,1,0.223,576
+,TOTALS,179,725,677,4795,72,15,0.269,
+Pitchers
+Avail,Player,Salary,ERA,WHIP,INN,K,S,Rank,
+Boys of Summer,Felix Hernandez SP | SEA ,8,4.36,1.29,86.7,78,0,392
+Boys of Summer,Jeremy Jeffress RP | MIL ,5,4.68,1.64,65.3,51,0,604
+Boys of Summer,"Caleb Smith RP | MIA ",5,7.71,1.66,18.7,18,0,1039
+Boys of Summer,Shohei Ohtani SP | LAA ,19,0.00,0.00,0.0,0,0,9999
+Boys of Summer,Eduardo Rodriguez SP | BOS ,2,4.19,1.28,137.3,150,0,294
+Boys of Summer,Lance McCullers SP | HOU ,7,4.25,1.30,118.7,132,0,299
+Boys of Summer,Zach Eflin SP | PHI ,4,6.16,1.41,64.3,35,0,1058
+Boys of Summer,J.A. Happ SP | NYY ,44,3.53,1.31,145.3,142,0,226
+Boys of Summer,"Keynan Middleton RP | LAA ",2,3.86,1.34,58.3,63,3,366
+Boys of Summer,Joe Musgrove RP | PIT ,1,4.77,1.33,109.3,98,2,373
+Boys of Summer,Jhoulys Chacin SP | MIL ,4,3.89,1.27,180.3,153,0,190
+,TOTALS,101,4.33,1.33,984.3,920,5,
+Brothers K
+Batters
+Avail,Player,HR,RBI,R,AB,Salary,SB,BA,Rank,
+Brothers K,Carlos Santana 1B | PHI ,23,79,90,571,16,5,0.259,78
+Brothers K,Lorenzo Cain CF | MIL,15,49,86,584,23,26,0.300,53
+Brothers K,Andrelton Simmons SS | LAA ,14,69,77,589,6,19,0.278,77
+Brothers K,Mike Zunino C | SEA ,25,64,52,387,1,1,0.251,162
+Brothers K,Enrique Hernandez CF | LAD ,11,37,46,297,1,3,0.215,317
+Brothers K,Jesus Aguilar 1B | MIL ,16,52,40,279,5,0,0.265,240
+Brothers K,Manny Pina C | MIL ,9,43,45,330,1,2,0.279,265
+Brothers K,Amed Rosario SS | NYM ,4,10,16,165,2,7,0.248,481
+Brothers K,Bryce Harper RF | WAS,29,87,95,420,35,4,0.319,28
+Brothers K,Marwin Gonzalez LF | HOU ,23,90,67,455,17,8,0.303,57
+Brothers K,Ozzie Albies 2B | ATL,6,28,34,217,17,8,0.286,302
+Brothers K,Giancarlo Stanton RF | NYY ,59,132,123,597,31,2,0.281,2
+Brothers K,Anthony Rendon 3B | WAS,25,100,81,508,24,7,0.301,34
+Brothers K,Justin Turner 3B | LAD ,21,71,72,457,21,7,0.322,66
+Brothers K,Billy Hamilton CF | CIN,4,38,85,582,8,59,0.247,58
+,TOTALS,284,949,1009,6438,208,158,0.280,
+Pitchers
+Avail,Player,Salary,ERA,WHIP,INN,K,S,Rank,
+Brothers K,"Jordan Montgomery SP | NYY ",2,3.88,1.23,155.3,144,0,232
+Brothers K,Luis Severino SP | NYY ,10,2.98,1.04,193.3,230,0,35
+Brothers K,Walker Buehler RP | LAD ,2,7.71,2.04,9.3,12,0,802
+Brothers K,"Kelvin Herrera RP | WAS ",2,4.25,1.35,59.3,56,26,283
+Brothers K,Jesse Chavez SP | CHC ,1,5.35,1.40,138.0,119,0,470
+Brothers K,German Marquez SP | COL ,1,4.39,1.38,162.0,147,0,280
+Brothers K,Pedro Strop RP | CHC ,1,2.83,1.18,60.3,65,0,340
+Brothers K,James Paxton SP | SEA ,11,2.98,1.10,136.0,156,0,109
+Brothers K,Felipe Vazquez RP | PIT ,10,1.67,0.89,75.3,88,21,122
+Brothers K,"Brent Suter SP | MIL ",1,3.42,1.29,81.7,64,0,437
+Brothers K,Marco Gonzales SP | SEA ,1,6.08,1.75,40.0,32,0,1056
+Brothers K,Corey Knebel RP | MIL,1,1.78,1.16,76.0,126,39,89
+Brothers K,Yoshihisa Hirano RP | ARI ,2,0.00,0.00,0.0,0,0,9999
+,TOTALS,45,3.63,1.23,1186.7,1239,86,
+Game of Throws
+Batters
+Avail,Player,HR,RBI,R,AB,Salary,SB,BA,Rank,
+Game of Throws,Trea Turner SS | WAS ,11,45,75,412,43,46,0.284,46
+Game of Throws,Wilson Ramos C | PHI ,11,35,19,208,11,0,0.260,361
+Game of Throws,Eric Hosmer 1B | SD ,25,94,98,603,20,6,0.318,22
+Game of Throws,Justin Upton LF | LAA ,35,109,100,557,10,14,0.273,11
+Game of Throws,"Gregory Polanco RF | PIT ",11,35,39,379,15,8,0.251,281
+Game of Throws,Joey Votto 1B | CIN,36,100,106,559,33,5,0.320,9
+Game of Throws,Scooter Gennett 2B | CIN ,27,97,80,461,13,3,0.295,41
+Game of Throws,Christian Yelich CF | MIL ,18,81,100,602,28,16,0.282,37
+Game of Throws,Austin Hedges C | SD ,18,55,36,387,3,4,0.214,270
+Game of Throws,Nomar Mazara RF | TEX ,20,101,64,554,15,2,0.253,99
+Game of Throws,Cody Bellinger 1B | LAD ,39,97,87,480,10,10,0.267,24
+Game of Throws,Ben Zobrist 2B | CHC ,12,50,58,435,2,2,0.232,262
+Game of Throws,Carlos Correa SS | HOU ,24,84,82,422,31,2,0.315,55
+Game of Throws,Stephen Piscotty RF | OAK ,9,39,40,341,1,3,0.235,326
+Game of Throws,David Wright 3B | NYM ,0,0,0,0,1,0,0.000,933
+,TOTALS,296,1022,984,6400,236,121,0.275,
+Pitchers
+Avail,Player,Salary,ERA,WHIP,INN,K,S,Rank,
+Game of Throws,Jack Flaherty SP | STL ,1,6.33,1.55,21.3,20,0,981
+Game of Throws,Arodys Vizcaino RP | ATL,7,2.83,1.10,57.3,64,14,248
+Game of Throws,Seranthony Dominguez SP | PHI ,6,0.00,0.00,0.0,0,0,9999
+Game of Throws,Aroldis Chapman RP | NYY ,19,3.22,1.13,50.3,69,22,230
+Game of Throws,Jon Gray SP | COL ,2,3.67,1.30,110.3,112,0,257
+Game of Throws,Chris Sale SP | BOS ,26,2.90,0.97,214.3,308,0,7
+Game of Throws,Stephen Strasburg SP | WAS ,18,2.52,1.02,175.3,204,0,33
+Game of Throws,Edwin Diaz RP | SEA ,10,3.27,1.15,66.0,89,34,151
+Game of Throws,Nathan Eovaldi SP | BOS ,1,0.00,0.00,0.0,0,0,839
+Game of Throws,Nick Pivetta SP | PHI ,1,6.02,1.51,133.0,140,0,522
+,TOTALS,91,3.55,1.16,828.0,1006,70,
+JUDGEment Day
+Batters
+Avail,Player,HR,RBI,R,AB,Salary,SB,BA,Rank,
+JUDGEment Day,Isiah Kiner-Falefa 2B | TEX,0,0,0,0,2,0,0.000,9999
+JUDGEment Day,Colin Moran 1B | PIT ,1,3,3,11,3,0,0.364,735
+JUDGEment Day,Michael Taylor CF | WAS,19,53,55,399,15,17,0.271,117
+JUDGEment Day,Nolan Arenado 3B | COL ,37,130,100,606,41,3,0.309,6
+JUDGEment Day,Aaron Judge RF | NYY ,52,114,128,542,10,9,0.284,3
+JUDGEment Day,Steve Pearce LF | BOS ,13,37,38,313,11,0,0.252,301
+JUDGEment Day,Josh Harrison 2B | PIT,16,47,66,486,2,12,0.272,141
+JUDGEment Day,Cesar Hernandez 2B | PHI ,9,34,85,511,1,15,0.293,119
+JUDGEment Day,Jackie Bradley CF | BOS ,17,63,58,482,7,8,0.245,168
+JUDGEment Day,Odubel Herrera CF | PHI ,14,56,67,526,12,8,0.281,137
+JUDGEment Day,Freddy Galvis SS | SD,12,61,71,608,3,14,0.255,144
+JUDGEment Day,Kris Bryant 3B | CHC ,29,73,111,549,38,7,0.295,27
+JUDGEment Day,Miguel Andujar 3B | NYY ,0,4,0,7,4,1,0.571,747
+JUDGEment Day,Jonathan Schoop 2B | MIL,32,105,92,622,6,1,0.293,26
+JUDGEment Day,Chris Iannetta C | COL ,17,43,38,272,3,0,0.254,267
+,TOTALS,268,823,912,5934,158,95,0.278,
+Pitchers
+Avail,Player,Salary,ERA,WHIP,INN,K,S,Rank,
+JUDGEment Day,Dereck Rodriguez SP | SF ,3,0.00,0.00,0.0,0,0,9999
+JUDGEment Day,Gerrit Cole SP | HOU ,14,4.26,1.25,203.0,196,0,177
+JUDGEment Day,Masahiro Tanaka SP | NYY ,16,4.74,1.24,178.3,194,0,188
+JUDGEment Day,Zach Britton RP | NYY,3,2.89,1.53,37.3,29,15,403
+JUDGEment Day,"Garrett Richards SP | LAA ",7,2.28,0.90,27.7,27,0,527
+JUDGEment Day,Carlos Martinez SP | STL ,16,3.64,1.22,205.0,217,0,106
+JUDGEment Day,"Dinelson Lamet SP | SD ",6,4.57,1.24,114.3,139,0,292
+JUDGEment Day,Chris Devenski RP | HOU ,1,2.68,0.94,80.7,100,4,182
+JUDGEment Day,Jameson Taillon SP | PIT ,5,4.44,1.48,133.7,125,0,384
+JUDGEment Day,Collin McHugh SP | HOU ,9,3.55,1.29,63.3,62,0,396
+JUDGEment Day,Tony Watson RP | SF,5,3.38,1.38,66.7,53,10,309
+JUDGEment Day,Roberto Osuna RP | HOU ,8,3.38,0.86,64.0,83,39,110
+,TOTALS,93,3.94,1.24,1174.0,1225,68,
+Junk Yard Dog
+Batters
+Avail,Player,HR,RBI,R,AB,Salary,SB,BA,Rank,
+Junk Yard Dog,Aramis Garcia C | SF ,0,0,0,0,5,0,0.000,9999
+Junk Yard Dog,Nelson Cruz DH | SEA,39,119,91,556,20,1,0.288,14
+Junk Yard Dog,Yuli Gurriel 1B | HOU ,18,75,69,529,6,3,0.299,88
+Junk Yard Dog,J.D. Martinez RF | BOS ,45,104,85,432,10,4,0.303,12
+Junk Yard Dog,Willson Contreras C | CHC ,21,74,50,377,22,5,0.276,128
+Junk Yard Dog,Charlie Blackmon CF | COL ,37,104,137,644,34,14,0.331,1
+Junk Yard Dog,Matt Kemp LF | LAD ,19,64,47,438,3,0,0.276,176
+Junk Yard Dog,"Howie Kendrick LF | WAS ",9,41,40,305,1,12,0.315,198
+Junk Yard Dog,Ketel Marte SS | ARI ,5,18,30,223,1,3,0.260,408
+Junk Yard Dog,Johan Camargo 3B | ATL,4,27,30,241,2,0,0.299,371
+Junk Yard Dog,Matt Olson 1B | OAK ,24,45,33,189,17,0,0.259,228
+Junk Yard Dog,Daniel Murphy 2B | CHC ,23,93,94,534,19,2,0.322,31
+Junk Yard Dog,Asdrubal Cabrera SS | PHI,14,59,66,479,2,3,0.280,157
+Junk Yard Dog,Alex Bregman 3B | HOU ,19,71,88,556,27,17,0.284,52
+Junk Yard Dog,Mitch Haniger RF | SEA ,16,47,58,369,9,5,0.282,173
+Junk Yard Dog,George Springer CF | HOU ,34,85,112,548,27,5,0.283,23
+,TOTALS,327,1026,1030,6420,205,74,0.294,
+Pitchers
+Avail,Player,Salary,ERA,WHIP,INN,K,S,Rank,
+Junk Yard Dog,Max Scherzer SP | WAS ,30,2.51,0.90,200.7,268,0,8
+Junk Yard Dog,Charlie Morton SP | HOU ,5,3.62,1.19,146.7,163,0,131
+Junk Yard Dog,Trevor Williams SP | PIT ,1,4.07,1.31,150.3,117,0,331
+Junk Yard Dog,Mike Fiers SP | OAK ,1,5.22,1.43,153.3,146,0,418
+Junk Yard Dog,Edwin Jackson SP | OAK ,1,5.21,1.51,76.0,60,0,599
+Junk Yard Dog,Alex Wood SP | LAD,2,2.72,1.06,152.3,151,0,71
+Junk Yard Dog,Kenley Jansen RP | LAD ,26,1.32,0.75,68.3,109,41,43
+Junk Yard Dog,Steven Matz SP | NYM ,2,6.08,1.53,66.7,48,0,1037
+Junk Yard Dog,Sean Doolittle RP | WAS ,10,2.81,0.86,51.3,62,24,213
+,TOTALS,78,3.66,1.17,1065.7,1124,65,
+Old Block
+Batters
+Avail,Player,HR,RBI,R,AB,Salary,SB,BA,Rank,
+Old Block,Luis Urias SS | SD ,0,0,0,0,1,0,0.000,9999
+Old Block,Tyler White 1B | HOU ,3,10,7,61,2,0,0.279,608
+Old Block,Luke Voit 1B | NYY ,4,18,18,114,1,0,0.246,506
+Old Block,Tyler O'Neill LF | STL,0,0,0,0,4,0,0.000,9999
+Old Block,Jean Segura SS | SEA ,11,45,80,524,21,22,0.300,82
+Old Block,Jose Miguel Fernandez 2B | LAA ,0,0,0,0,1,0,0.000,9999
+Old Block,David Dahl LF | COL ,0,0,0,0,6,0,0.000,933
+Old Block,Paul DeJong SS | STL,25,65,55,417,10,1,0.285,120
+Old Block,Carlos Gonzalez RF | COL ,14,57,72,470,2,3,0.262,166
+Old Block,Yadier Molina C | STL ,18,82,60,501,13,9,0.274,95
+Old Block,Francisco Mejia C | SD ,0,1,1,13,1,0,0.154,972
+Old Block,Maikel Franco 3B | PHI ,24,76,66,575,1,0,0.230,159
+Old Block,Corey Dickerson LF | PIT ,27,62,84,588,7,4,0.282,75
+Old Block,Andrew McCutchen CF | NYY ,28,88,94,570,23,11,0.279,32
+Old Block,Jose Martinez LF | STL ,14,46,47,272,3,4,0.309,193
+,TOTALS,168,550,584,4105,96,54,0.274,
+Pitchers
+Avail,Player,Salary,ERA,WHIP,INN,K,S,Rank,
+Old Block,"Yu Darvish SP | CHC ",23,3.86,1.16,186.7,209,0,135
+Old Block,Derek Holland SP | SF,1,6.20,1.71,135.0,104,0,1077
+Old Block,Trevor Richards SP | MIA ,1,0.00,0.00,0.0,0,0,9999
+Old Block,Jose Leclerc RP | TEX ,4,3.94,1.38,45.7,60,2,482
+Old Block,Jaime Barria SP | LAA ,1,0.00,0.00,0.0,0,0,9999
+Old Block,Eric Lauer SP | SD ,2,0.00,0.00,0.0,0,0,9999
+Old Block,Kyle Freeland SP | COL ,4,4.10,1.49,156.0,107,0,354
+Old Block,Sean Newcomb SP | ATL ,4,4.32,1.57,100.0,108,0,500
+Old Block,"Chad Kuhl SP | PIT ",1,4.35,1.47,157.3,142,0,365
+Old Block,Anibal Sanchez SP | ATL ,1,6.41,1.59,105.3,104,0,1057
+Old Block,Mike Soroka SP | ATL ,1,0.00,0.00,0.0,0,0,9999
+Old Block,Blake Treinen RP | OAK ,9,3.92,1.39,75.7,74,16,329
+Old Block,Josh Hader RP | MIL ,1,2.08,0.99,47.7,68,0,353
+,TOTALS,53,4.52,1.44,1009.3,976,18,
+Pablo's Ice Cream Truck
+Batters
+Avail,Player,HR,RBI,R,AB,Salary,SB,BA,Rank,
+Pablo's Ice Cream Truck,Ender Inciarte CF | ATL ,11,57,93,662,8,22,0.304,50
+Pablo's Ice Cream Truck,Franmil Reyes OF | SD,0,0,0,0,2,0,0.000,9999
+Pablo's Ice Cream Truck,Jonathan Lucroy C | OAK ,6,40,45,423,3,1,0.265,305
+Pablo's Ice Cream Truck,Aaron Hicks CF | NYY ,15,52,54,301,10,10,0.266,169
+Pablo's Ice Cream Truck,Matt Carpenter 1B | STL ,23,69,91,497,13,2,0.241,102
+Pablo's Ice Cream Truck,Gary Sanchez C | NYY ,33,90,79,471,29,2,0.278,47
+Pablo's Ice Cream Truck,Brandon Crawford SS | SF ,14,77,58,518,2,3,0.253,171
+Pablo's Ice Cream Truck,Matt Chapman 3B | OAK ,14,40,39,290,3,0,0.234,303
+Pablo's Ice Cream Truck,Manny Machado 3B | LAD ,33,95,81,630,65,9,0.259,38
+Pablo's Ice Cream Truck,Trevor Story SS | COL ,24,82,68,503,15,7,0.239,101
+Pablo's Ice Cream Truck,"Albert Pujols DH | LAA ",23,101,53,593,11,3,0.241,118
+Pablo's Ice Cream Truck,Tommy Pham LF | TB ,23,73,95,444,10,25,0.306,9999
+Pablo's Ice Cream Truck,Ian Happ CF | CHC ,24,68,62,364,18,8,0.253,108
+Pablo's Ice Cream Truck,Eduardo Nunez 3B | BOS ,12,58,60,467,3,24,0.313,79
+Pablo's Ice Cream Truck,Khris Davis LF | OAK ,43,110,91,566,26,4,0.247,25
+Pablo's Ice Cream Truck,Harrison Bader CF | STL,3,10,10,85,1,2,0.235,586
+,TOTALS,301,1022,979,6814,219,122,0.265,
+Pitchers
+Avail,Player,Salary,ERA,WHIP,INN,K,S,Rank,
+Pablo's Ice Cream Truck,Andrew Heaney SP | LAA ,4,7.06,1.66,21.7,27,0,816
+Pablo's Ice Cream Truck,Mike Foltynewicz SP | ATL ,5,4.79,1.48,154.0,143,0,364
+Pablo's Ice Cream Truck,Kevin Gausman SP | ATL ,9,4.68,1.49,186.7,179,0,325
+Pablo's Ice Cream Truck,Raisel Iglesias RP | CIN ,17,2.49,1.11,76.0,92,28,158
+Pablo's Ice Cream Truck,Kyle Hendricks SP | CHC ,14,3.03,1.19,139.7,123,0,224
+Pablo's Ice Cream Truck,"Michael Wacha SP | STL ",2,4.13,1.36,165.7,158,0,235
+Pablo's Ice Cream Truck,Rich Hill SP | LAD ,14,3.32,1.09,135.7,166,0,111
+Pablo's Ice Cream Truck,Aaron Nola SP | PHI ,19,3.54,1.21,168.0,184,0,133
+Pablo's Ice Cream Truck,Hector Rondon RP | HOU ,1,4.24,1.22,57.3,69,0,417
+Pablo's Ice Cream Truck,Bud Norris RP | STL ,3,4.21,1.34,62.0,74,19,319
+,TOTALS,88,3.95,1.30,1166.7,1215,47,
+The League of Extraordinary Tradesmen
+Batters
+Avail,Player,HR,RBI,R,AB,Salary,SB,BA,Rank,
+The League of Extraordinary Tradesmen,Rougned Odor 2B | TEX,30,75,79,607,13,15,0.204,91
+The League of Extraordinary Tradesmen,Ryon Healy DH | SEA,25,78,66,576,8,0,0.271,97
+The League of Extraordinary Tradesmen,Kurt Suzuki C | ATL,19,50,38,276,1,0,0.283,219
+The League of Extraordinary Tradesmen,Brett Gardner LF | NYY,21,63,96,594,8,23,0.264,49
+The League of Extraordinary Tradesmen,Brandon Nimmo LF | NYM ,5,21,26,177,4,2,0.260,427
+The League of Extraordinary Tradesmen,"Zack Cozart SS | LAA ",24,63,80,438,4,3,0.297,80
+The League of Extraordinary Tradesmen,"Yoenis Cespedes LF | NYM ",17,42,46,291,20,0,0.292,221
+The League of Extraordinary Tradesmen,Marcell Ozuna LF | STL ,37,124,93,613,24,1,0.312,10
+The League of Extraordinary Tradesmen,Kyle Seager 3B | SEA ,27,88,72,578,12,2,0.249,87
+The League of Extraordinary Tradesmen,Tony Kemp LF | HOU,0,4,6,37,3,1,0.216,740
+The League of Extraordinary Tradesmen,Cory Spangenberg 3B | SD ,13,46,57,444,5,11,0.264,187
+The League of Extraordinary Tradesmen,Kyle Schwarber LF | CHC ,30,59,67,422,15,1,0.211,161
+The League of Extraordinary Tradesmen,Martin Maldonado C | HOU ,14,38,43,429,2,0,0.221,337
+The League of Extraordinary Tradesmen,Joey Gallo 3B | TEX ,41,80,85,449,10,7,0.209,62
+The League of Extraordinary Tradesmen,Mookie Betts RF | BOS ,24,102,101,628,37,26,0.264,18
+The League of Extraordinary Tradesmen,Didi Gregorius SS | NYY ,25,87,73,534,3,3,0.286,69
+The League of Extraordinary Tradesmen,"Brandon Drury 2B | TOR ",13,63,41,445,1,1,0.267,9999
+The League of Extraordinary Tradesmen,Phillip Ervin CF | CIN ,3,10,8,58,3,4,0.259,551
+The League of Extraordinary Tradesmen,"Jarrod Dyson CF | ARI ",5,30,56,346,1,28,0.251,191
+,TOTALS,373,1123,1133,7942,174,128,0.259,
+Pitchers
+Avail,Player,Salary,ERA,WHIP,INN,K,S,Rank,
+The League of Extraordinary Tradesmen,Joey Lucchesi SP | SD ,3,0.00,0.00,0.0,0,0,9999
+The League of Extraordinary Tradesmen,Zack Greinke SP | ARI ,15,3.20,1.07,202.3,215,0,36
+The League of Extraordinary Tradesmen,Mike Leake SP | SEA ,2,3.92,1.28,186.0,130,0,260
+The League of Extraordinary Tradesmen,David Robertson RP | NYY,2,1.84,0.85,68.3,98,14,103
+The League of Extraordinary Tradesmen,"Jimmy Nelson SP | MIL ",3,3.49,1.25,175.3,199,0,127
+The League of Extraordinary Tradesmen,Kyle Barraclough RP | MIA ,3,3.00,1.38,66.0,76,1,339
+The League of Extraordinary Tradesmen,Mike Minor RP | TEX,2,2.55,1.02,77.7,88,6,220
+The League of Extraordinary Tradesmen,Wade Davis RP | COL ,16,2.30,1.14,58.7,79,32,152
+The League of Extraordinary Tradesmen,Jacob deGrom SP | NYM ,20,3.53,1.19,201.3,239,0,68
+The League of Extraordinary Tradesmen,Jon Lester SP | CHC ,16,4.33,1.32,180.7,180,0,203
+,TOTALS,82,3.40,1.19,1216.3,1304,53,
+West Side Strikeouts
+Batters
+Avail,Player,HR,RBI,R,AB,Salary,SB,BA,Rank,
+West Side Strikeouts,Francisco Cervelli C | PIT ,5,31,31,265,2,0,0.249,405
+West Side Strikeouts,Mike Moustakas 3B | MIL,38,85,75,555,18,0,0.272,51
+West Side Strikeouts,Josh Bell 1B | PIT,26,90,75,549,10,2,0.255,83
+West Side Strikeouts,J.T. Realmuto C | MIA ,17,65,68,532,16,8,0.278,107
+West Side Strikeouts,Rhys Hoskins LF | PHI ,18,48,37,170,10,2,0.259,236
+West Side Strikeouts,Ronald Acuna CF | ATL,0,0,0,0,18,0,0.000,9999
+West Side Strikeouts,Rafael Devers 3B | BOS ,10,30,34,222,10,3,0.284,300
+West Side Strikeouts,Jeff McNeil 3B | NYM,0,0,0,0,2,0,0.000,9999
+West Side Strikeouts,Yasiel Puig RF | LAD ,28,74,72,499,8,15,0.263,64
+West Side Strikeouts,Marcus Semien SS | OAK ,10,40,53,342,1,12,0.248,227
+West Side Strikeouts,Jose Peraza 2B | CIN ,5,37,50,487,10,23,0.259,208
+West Side Strikeouts,Starling Marte LF | PIT ,7,31,48,309,27,21,0.275,204
+West Side Strikeouts,Juan Soto RF | WAS ,0,0,0,0,13,0,0.000,9999
+West Side Strikeouts,Max Muncy RF | LAD ,0,0,0,0,1,0,0.000,9999
+,TOTALS,164,531,543,3930,146,86,0.264,
+Pitchers
+Avail,Player,Salary,ERA,WHIP,INN,K,S,Rank,
+West Side Strikeouts,Dallas Keuchel SP | HOU ,13,2.90,1.12,145.7,125,0,113
+West Side Strikeouts,David Price SP | BOS ,18,3.38,1.19,74.7,76,0,324
+West Side Strikeouts,Jose Quintana SP | CHC ,21,4.15,1.22,188.7,207,0,160
+West Side Strikeouts,Jeremy Hellickson SP | WAS ,2,5.43,1.26,164.0,96,0,465
+West Side Strikeouts,Kenta Maeda SP | LAD,3,4.22,1.15,134.3,140,1,175
+West Side Strikeouts,Jake Arrieta SP | PHI ,15,3.53,1.22,168.3,163,0,134
+West Side Strikeouts,Luis Castillo SP | CIN,9,3.12,1.07,89.3,98,0,298
+West Side Strikeouts,John Gant RP | STL ,2,4.67,1.56,17.3,11,0,817
+West Side Strikeouts,Zack Wheeler SP | NYM,3,5.21,1.59,86.3,81,0,700
+West Side Strikeouts,Pat Neshek RP | PHI,2,1.59,0.87,62.3,69,1,247
+West Side Strikeouts,Brad Hand RP | CLE,11,2.15,0.93,79.3,104,21,9999
+West Side Strikeouts,"Brandon Morrow RP | CHC ",13,2.06,0.92,43.7,50,2,295
+West Side Strikeouts,"Brandon McCarthy SP | ATL ",1,3.98,1.25,92.7,72,0,375
+,TOTALS,113,3.75,1.18,1346.7,1292,25,
