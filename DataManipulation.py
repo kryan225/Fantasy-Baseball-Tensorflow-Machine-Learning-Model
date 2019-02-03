@@ -2,6 +2,17 @@
 """
 Created on Sat Feb  2 15:56:59 2019
 
+This file's purpose is to load baseball stats from csv files and produce train/test splits
+that can be fed into a tensorflow nueral net.
+
+This is for a personal project where I develop a fantasy baseball draft toolkit for my custom league. 
+The winner of my league gets $600+ and as of developing this, my team has finished 7th place four years in a row.
+The cutoff of winning any money back is 6th place so my co-owner/brother and I are a little annoyed. I hope that this
+toolkit will provide us with an advantage for evaluating players and forming a draft strategy. Even though you don't necessarily 
+win your league on draft day, you can have a massive head start and it is possible to lose the league at the draft. 
+
+any questions or comments please email me at: kryan225.gomets@gmail.com
+
 @author: kryan
 """
 
