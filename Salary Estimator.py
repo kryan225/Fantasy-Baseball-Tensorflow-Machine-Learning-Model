@@ -16,3 +16,121 @@ any questions or comments please email me at: kryan225.gomets@gmail.com
 @author: kryan
 """
 
+import tensorflow as tf
+import numpy as np
+import pandas as pd
+import DataManipulation as DM
+
+
+
+STEPS = 1000
+PRICE_NORM_FACTOR = 1
+DIRECTORY = 'Users\kryan\Google Drive\Ryan files\College\Senior\FantasyBaseballToolkit\Fantasy-Baseball-Tensorflow-Machine-Learning-Model\saved'
+
+
+
+feature_specs_glob = {
+                   'Age': tf.VarLenFeature(dtype=tf.int64),
+                   'AB': tf.VarLenFeature(dtype=tf.int64),
+                   'H': tf.VarLenFeature(dtype=tf.int64),
+                   'R': tf.VarLenFeature(dtype=tf.int64),
+                   'RBI': tf.VarLenFeature(dtype=tf.int64),
+                   'HR': tf.VarLenFeature(dtype=tf.int64),   
+                   'SB': tf.VarLenFeature(dtype=tf.int64),
+                   }
+                   
+def main(argv):
+    '''builds trains and evaluates the model'''
+    
+    #get the train/test data
+    (train_x, train_y), (test_x, test_y) = DM.offLoad()
+    
+    #build the feature columns
+    ageCol = tf.feature_column.numeric_column(key='Age')
+    atbatCol = tf.feature_column.numeric_column(key='AB')
+    hitCol = tf.feature_column.numeric_column(key='H')
+    runCol = tf.feature_column.numeric_column(key='R')
+    rbiCol = tf.feature_column.numeric_column(key='RBI')
+    hrCol = tf.feature_column.numeric_column(key='HR')
+    sbCol = tf.feature_column.numeric_column(key='SB')
+    
+    #define the feature columns in a list
+    feature_columns = [
+                       ageCol,
+                       atbatCol, 
+                       hitCol,
+                       runCol,
+                       rbiCol,
+                       hrCol,
+                       sbCol,      
+    ]
+    
+    #configure checkpoints:
+    my_checkpointing_config = tf.estimator.RunConfig(
+                        save_checkpoints_secs = 20,  # Save checkpoints every 20 secs.
+                        keep_checkpoint_max = 10,       # Retain the 10 most recent checkpoints.
+    )
+   
+    # Build the Estimator.
+    #model = tf.estimator.LinearRegressor(
+    model = tf.estimator.DNNRegressor(
+                        hidden_units=[31, 22, 15, 12],
+                        feature_columns=feature_columns,
+                        config=my_checkpointing_config,
+                        #model_dir= DIRECTORY
+    )
+    
+    # Train the model.
+    # By default, the Estimators log output every 100 steps.
+    model.train(input_fn=lambda:DM.train_input_fn(train_x, train_y, 100), steps=STEPS)
+    
+    # Evaluate how the model performs on data it has not yet seen.
+    eval_result = model.evaluate(input_fn=lambda:DM.eval_input_fn(test_x, test_y, 100))
+
+    # The evaluation returns a Python dictionary. The "average_loss" key holds the
+    # Mean Squared Error (MSE).
+    average_loss = eval_result["average_loss"]
+
+    # Convert MSE to Root Mean Square Error (RMSE).
+    print("\n" + 80 * "*")
+    print("\nRMS error for the test set: {:.0f} dollars"
+          .format(PRICE_NORM_FACTOR * average_loss**0.5))
+    
+    
+    
+    expected = [38]
+    predict_x = {
+          'Age': [26],
+          'AB':[606],
+          'H': [187],
+          'R': [100],
+          'RBI': [130],
+          'HR': [37],
+          'SB': [3]
+                        
+      }
+
+    predictions = model.predict(
+          input_fn=lambda:DM.eval_input_fn(predict_x,
+                                                  labels=None,
+                                                  batch_size=100))
+
+    template = ('\nPrediction is "{}" , expected "{}"')
+
+    
+  
+    for pred_dict, expec in zip(predictions, expected):
+        print(template.format(pred_dict["predictions"][0], expec))
+    
+    
+    
+    
+    
+    
+    
+    
+if __name__ == "__main__":
+  # The Estimator periodically generates "INFO" logs; make these logs visible.
+  tf.logging.set_verbosity(tf.logging.INFO)
+  tf.app.run(main=main)
+
