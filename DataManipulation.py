@@ -24,21 +24,24 @@ import tensorflow as tf
 import matplotlib
 
 ##import 4 csv files with historical data from 2018-2015
-data15 = pd.read_csv("2015_N_B.csv")
-data16 = pd.read_csv("2016_N_B.csv")
-data17 = pd.read_csv("2017_N_B.csv")
-data18 = pd.read_csv("2018_N_B.csv")
+data16a = pd.read_csv("2016_A_B.csv")
+data16n = pd.read_csv("2016_N_B.csv")
+data17a = pd.read_csv("2017_A_B.csv")
+data17n = pd.read_csv("2017_N_B.csv")
+data18a = pd.read_csv("2018_A_B.csv")
+data18n = pd.read_csv("2018_N_B.csv")
 
 ##combine above dataframes into one dataframe
-allData = pd.concat([data15,data16,data17,data18])
+allData = pd.concat([data16a,data16n,data17a, data17n, data18a, data18n])
 
 def getOstats(df):
     """Takes a raw dataframe exported from BaseballHQ and produces a condenced dataframe with specific
         Offesensive stats"""
 
     condence = pd.DataFrame()
-    condence = df[['Age','AB','H','R','RBI','HR','SB','R$']]
-    return condence
+    condence = df[['Player', 'Age','AB','H','R','RBI','HR','SB','R$']]
+    condence = condence.reset_index()
+    return condence.sort_values(by=['R$'], ascending=False)
     
 ##define a dataframe that has condenced offensive categories 
 offData = getOstats(allData)
@@ -70,6 +73,11 @@ def offLoad(df = offData):
 
 
 
+def export(dfram, name):
+    '''exports a dataframe to local file, names file according to input'''
+    dfram.to_csv(name)
+    
+    
 
 def train_input_fn(features, labels, batch_size):
     """An input function for tensorflow for training"""

@@ -22,7 +22,7 @@ import pandas as pd
 import DataManipulation as DM
 
 
-
+glob = 0
 STEPS = 1000
 PRICE_NORM_FACTOR = 1
 DIRECTORY = 'Users\kryan\Google Drive\Ryan files\College\Senior\FantasyBaseballToolkit\Fantasy-Baseball-Tensorflow-Machine-Learning-Model\saved'
@@ -56,13 +56,14 @@ def main(argv):
     
     #define the feature columns in a list
     feature_columns = [
-                       ageCol,
-                       atbatCol, 
-                       hitCol,
-                       runCol,
-                       rbiCol,
-                       hrCol,
-                       sbCol,      
+       ageCol,
+       atbatCol, 
+       #hitCol,
+       runCol,
+       #rbiCol,
+       #hrCol,
+       sbCol,      
+       tf.feature_column.indicator_column(tf.feature_column.crossed_column(['H', 'AB'], hash_bucket_size=int(1e4))),
     ]
     
     #configure checkpoints:
@@ -76,7 +77,7 @@ def main(argv):
     model = tf.estimator.DNNRegressor(
                         hidden_units=[31, 22, 15, 12],
                         feature_columns=feature_columns,
-                        config=my_checkpointing_config,
+                        #config=my_checkpointing_config,
                         #model_dir= DIRECTORY
     )
     
@@ -90,12 +91,13 @@ def main(argv):
     # The evaluation returns a Python dictionary. The "average_loss" key holds the
     # Mean Squared Error (MSE).
     average_loss = eval_result["average_loss"]
-
+    glob = eval_result
     # Convert MSE to Root Mean Square Error (RMSE).
     print("\n" + 80 * "*")
     print("\nRMS error for the test set: {:.0f} dollars"
-          .format(PRICE_NORM_FACTOR * average_loss**0.5))
-    
+          #.format(PRICE_NORM_FACTOR * average_loss**0.5))
+        .format(average_loss))
+    print("\nSaved at: " + model.model_dir + "\n")
     
     
     expected = [38]
