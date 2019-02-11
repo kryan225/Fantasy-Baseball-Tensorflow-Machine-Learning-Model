@@ -11,8 +11,9 @@ import SalaryPredictor as SP
 import DataManipulation as DM
 import operator
 
-data = DM.offData.reset_index()
-predictions = {'Age': [],
+#data = DM.offData.reset_index()
+data = pd.read_csv('projections.csv')
+predictions = {
               'AB':[],
               'H': [],
               'R': [],
@@ -23,7 +24,7 @@ predictions = {'Age': [],
 
 
 for index, row in data.iterrows():    
-    predictions['Age'].append(row['Age'])
+    #predictions['Age'].append(row['Age'])
     predictions['AB'].append(row['AB'])
     predictions['H'].append(row['H'])
     predictions['R'].append(row['R'])
@@ -33,13 +34,17 @@ for index, row in data.iterrows():
     
     
 
-expected = [0] * (len(predictions['Age']))
+expected = [0] * (len(predictions['AB']))
 
 booyah = SP.modelPredict(predictions, expected)
 
 '''
 Current problem is there are 866 unique players, but we have 1921 predictions. When we build the dict that holds every player 
-to their prediction, they end up getting paird with their oldest (lowest) salary prediction. 
+to their prediction, they end up getting paired with their oldest (lowest) salary prediction. 
+
+I think we ready to try with the baseballHQ 2019 predictions now
+
+NORMALIZE THE DATA YOU STUPID MORON 
 '''
 
 newDict = dict()
@@ -48,7 +53,8 @@ for item in booyah[:]:
     string = data.loc[x]['Player']
     
     if(string in newDict):
-        print(string)
+        if(newDict[string] < item):
+            newDict[string] = int(item)
     else:
         newDict[string] = int(item)
     x = x + 1

@@ -19,6 +19,7 @@ any questions or comments please email me at: kryan225.gomets@gmail.com
 
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import normalize
 from sklearn.model_selection import train_test_split
 import tensorflow as tf
 import matplotlib

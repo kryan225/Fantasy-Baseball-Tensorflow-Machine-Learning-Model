@@ -45,7 +45,7 @@ def modelPredict(predict_x, expected):
     
     #define the feature columns in a list
     feature_columns = [
-       ageCol,
+       #ageCol,
        atbatCol, 
        hitCol,
        runCol,
@@ -53,6 +53,10 @@ def modelPredict(predict_x, expected):
        hrCol,
        sbCol,      
        tf.feature_column.indicator_column(tf.feature_column.crossed_column(['H', 'AB'], hash_bucket_size=int(1e4))),
+      # tf.feature_column.indicator_column(tf.feature_column.crossed_column(['HR', 'RBI', 'R'], hash_bucket_size=int(1e4))),
+      # tf.feature_column.indicator_column(tf.feature_column.crossed_column(['H', 'AB', 'SB'], hash_bucket_size=int(1e4))),                                                                    
+      # tf.feature_column.indicator_column(tf.feature_column.crossed_column(['H', 'AB', 'HR', 'RBI', 'R', 'SB'], hash_bucket_size=int(1e4))),
+      # tf.feature_column.indicator_column(tf.feature_column.crossed_column(['H', 'AB', 'HR', 'RBI', 'R'], hash_bucket_size=int(1e4))),   
     ]
     
     #configure checkpoints:
