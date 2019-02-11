@@ -47,10 +47,10 @@ def modelPredict(predict_x, expected):
     feature_columns = [
        ageCol,
        atbatCol, 
-       #hitCol,
+       hitCol,
        runCol,
-       #rbiCol,
-       #hrCol,
+       rbiCol,
+       hrCol,
        sbCol,      
        tf.feature_column.indicator_column(tf.feature_column.crossed_column(['H', 'AB'], hash_bucket_size=int(1e4))),
     ]
@@ -78,7 +78,6 @@ def modelPredict(predict_x, expected):
 
     template = ('\nPrediction is "{}" , expected "{}"')
     ret = []
-    realret = []
     
     
     

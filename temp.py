@@ -36,12 +36,21 @@ for index, row in data.iterrows():
 expected = [0] * (len(predictions['Age']))
 
 booyah = SP.modelPredict(predictions, expected)
+
+'''
+Current problem is there are 866 unique players, but we have 1921 predictions. When we build the dict that holds every player 
+to their prediction, they end up getting paird with their oldest (lowest) salary prediction. 
+'''
+
 newDict = dict()
 x = 0
-for item in booyah:
+for item in booyah[:]:
     string = data.loc[x]['Player']
-    print(string)
-    newDict[string] = int(item)
+    
+    if(string in newDict):
+        print(string)
+    else:
+        newDict[string] = int(item)
     x = x + 1
     
-sorted_d = sorted(newDict.items(), key=operator.itemgetter(1))
+sorted_d = sorted(newDict.items(), key=operator.itemgetter(1), reverse=True)
