@@ -25,15 +25,23 @@ import tensorflow as tf
 import matplotlib
 
 ##import 4 csv files with historical data from 2018-2015
-data16a = pd.read_csv("2016_A_B.csv")
-data16n = pd.read_csv("2016_N_B.csv")
-data17a = pd.read_csv("2017_A_B.csv")
-data17n = pd.read_csv("2017_N_B.csv")
-data18a = pd.read_csv("2018_A_B.csv")
-data18n = pd.read_csv("2018_N_B.csv")
+#data16a = pd.read_csv("2016_A_B.csv")
+#data16n = pd.read_csv("2016_N_B.csv")
+#data17a = pd.read_csv("2017_A_B.csv")
+#data17n = pd.read_csv("2017_N_B.csv")
+#data18a = pd.read_csv("2018_A_B.csv")
+#data18n = pd.read_csv("2018_N_B.csv")
 
 ##combine above dataframes into one dataframe
-allData = pd.concat([data16a,data16n,data17a, data17n, data18a, data18n])
+allData = pd.read_csv("combinedCSV.csv")#pd.concat([data16a,data16n,data17a, data17n, data18a, data18n])
+
+
+def clean(df):
+    '''Cleans a dataframe from all players with not enough at bats, or if their value is too low'''
+    df = df[df.AB > 170]
+    df = df[df['R$'] >= 0]
+    
+    return df
 
 def getOstats(df):
     """Takes a raw dataframe exported from BaseballHQ and produces a condenced dataframe with specific
@@ -42,13 +50,34 @@ def getOstats(df):
     condence = pd.DataFrame()
     condence = df[['Player', 'Age','AB','H','R','RBI','HR','SB','R$']]
     condence = condence.reset_index()
+
     return condence.sort_values(by=['R$'], ascending=False)
     
-##define a dataframe that has condenced offensive categories 
+
+
+def norm(df):
+    normalizedDF = pd.DataFrame()
+    for colName in df.columns:
+        newCol = []
+        if colName == 'Player':
+            normalizedDF[colName] = df[colName]
+        elif colName == 'R$':
+            normalizedDF[colName] = df[colName]
+        else:   
+            mx = max(df[colName])
+            mn = min(df[colName])
+            print(colName, " - max: ", mx , ", min: " , mn)
+            for i in df[colName]:
+                newCol.append( (i-mn)/(mx-mn) )
+            normalizedDF[colName] = newCol
+            
+    return normalizedDF
+        
+##define a dataframe that has condenced, normalized offensive categories   
 offData = getOstats(allData)
+normData = norm(offData)
 
-
-def offLoad(df = offData):
+def offLoad(df = clean(offData)):
     """Takes a dataframe and prepares it to be given to a tensorflow model
             Creates 2 dataframes for features and labels and then splits them into training and testing sets
             The default value for this function is the concatenated, condences df created earlier: offData"""    
