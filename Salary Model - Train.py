@@ -25,7 +25,8 @@ import DataManipulation as DM
 glob = 0
 STEPS = 1000
 PRICE_NORM_FACTOR = 1
-DIRECTORY = 'Users\kryan\Google Drive\Ryan files\College\Senior\FantasyBaseballToolkit\Fantasy-Baseball-Tensorflow-Machine-Learning-Model\saved'
+DIRECTORY = 'Users\kryan\Desktop\larry'
+#'Users\kryan\Google Drive\Ryan files\College\Senior\FantasyBaseballToolkit\Fantasy-Baseball-Tensorflow-Machine-Learning-Model\saved'
 
 
 
@@ -56,14 +57,18 @@ def main(argv):
     
     #define the feature columns in a list
     feature_columns = [
-       ageCol,
+       #ageCol,
        atbatCol, 
-       #hitCol,
+       hitCol,
        runCol,
-       #rbiCol,
-       #hrCol,
+       rbiCol,
+       hrCol,
        sbCol,      
        tf.feature_column.indicator_column(tf.feature_column.crossed_column(['H', 'AB'], hash_bucket_size=int(1e4))),
+       #tf.feature_column.indicator_column(tf.feature_column.crossed_column(['HR', 'RBI', 'R'], hash_bucket_size=int(1e4))),
+       #tf.feature_column.indicator_column(tf.feature_column.crossed_column(['H', 'AB', 'SB'], hash_bucket_size=int(1e4))),                                                                    
+       #tf.feature_column.indicator_column(tf.feature_column.crossed_column(['H', 'AB', 'HR', 'RBI', 'R', 'SB'], hash_bucket_size=int(1e4))),
+       #tf.feature_column.indicator_column(tf.feature_column.crossed_column(['H', 'AB', 'HR', 'RBI', 'R'], hash_bucket_size=int(1e4))),                                                                    
     ]
     
     #configure checkpoints:
@@ -77,8 +82,8 @@ def main(argv):
     model = tf.estimator.DNNRegressor(
                         hidden_units=[31, 22, 15, 12],
                         feature_columns=feature_columns,
-                        #config=my_checkpointing_config,
-                        #model_dir= DIRECTORY
+                        config=my_checkpointing_config,
+                        model_dir='saved'
     )
     
     # Train the model.
@@ -102,13 +107,13 @@ def main(argv):
     
     expected = [38]
     predict_x = {
-          'Age': [26],
-          'AB':[606],
-          'H': [187],
-          'R': [100],
-          'RBI': [130],
-          'HR': [37],
-          'SB': [3]
+          #'Age': [26],
+          'AB':[549],
+          'H': [173],
+          'R': [123],
+          'RBI': [100],
+          'HR': [29],
+          'SB': [30]
                         
       }
 
