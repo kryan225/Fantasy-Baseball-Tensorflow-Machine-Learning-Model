@@ -18,6 +18,7 @@ import tensorflow as tf
 import numpy as np
 import pandas as pd
 import DataManipulation as DM
+import operator
 
 def buildSinglePredict(ab, age, h, hr, r, rbi, sb):
     prediction = {'AB':[ab],
@@ -93,3 +94,55 @@ def modelPredict(predict_x, expected):
 
     
     return ret
+    
+    
+    
+    
+def runBatchPredict(file):
+    '''
+    This function will take the name of a csv and run a prediction job on it, calling a trained NN. 
+    It will return a dictionary with each player's name corresponding to their salary.
+    
+    Maybe I can have it display the stats too
+    '''
+    data = pd.read_csv(file)
+    predictions = {
+                  'AB':[],
+                  'H': [],
+                  'R': [],
+                  'RBI': [],
+                  'HR': [],
+                  'SB': []
+                  }
+
+
+    for index, row in data.iterrows():    
+        #predictions['Age'].append(row['Age'])
+        predictions['AB'].append(row['AB'])
+        predictions['H'].append(row['H'])
+        predictions['R'].append(row['R'])
+        predictions['RBI'].append(row['RBI'])
+        predictions['HR'].append(row['HR'])
+        predictions['SB'].append(row['SB'])
+        
+        
+
+    expected = [0] * (len(predictions['AB']))
+
+    booyah = modelPredict(predictions, expected)
+
+
+    newDict = dict()
+    x = 0
+    for item in booyah[:]:
+        string = data.loc[x]['Player']
+        
+        if(string in newDict):
+            if(newDict[string] < item):
+                newDict[string] = int(item)
+        else:
+            newDict[string] = int(item)
+        x = x + 1
+        
+    sorted_d = sorted(newDict.items(), key=operator.itemgetter(1), reverse=True)
+    return sorted_d
