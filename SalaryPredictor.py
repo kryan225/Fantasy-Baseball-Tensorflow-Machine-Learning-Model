@@ -20,7 +20,7 @@ import pandas as pd
 import DataManipulation as DM
 import operator
 
-def buildSinglePredict(ab, age, h, hr, r, rbi, sb):
+def buildSinglePredict(ab, h, r, hr, rbi, sb, age=26):
     prediction = {'AB':[ab],
                   'Age':[age],
                   'H':[h],
@@ -31,7 +31,7 @@ def buildSinglePredict(ab, age, h, hr, r, rbi, sb):
                   }
     return prediction
 
-def modelPredict(predict_x, expected):
+def modelPredict(predict_x, path='saved', expected=[0]):
     '''This function rebuilds a NN from a directory where it was saved in a training job
     It then runs a predction job based on the given inputs'''
     
@@ -72,7 +72,7 @@ def modelPredict(predict_x, expected):
                         hidden_units=[31, 22, 15, 12],
                         feature_columns=feature_columns,
                         config=my_checkpointing_config,
-                        model_dir='saved'
+                        model_dir=path
     )
     
 
@@ -98,7 +98,7 @@ def modelPredict(predict_x, expected):
     
     
     
-def runBatchPredict(file):
+def runBatchPredict(file, modelPath='saved'):
     '''
     This function will take the name of a csv and run a prediction job on it, calling a trained NN. 
     It will return a dictionary with each player's name corresponding to their salary.
@@ -129,7 +129,7 @@ def runBatchPredict(file):
 
     expected = [0] * (len(predictions['AB']))
 
-    booyah = modelPredict(predictions, expected)
+    booyah = modelPredict(predictions, path=modelPath, expected=expected)
 
 
     newDict = dict()

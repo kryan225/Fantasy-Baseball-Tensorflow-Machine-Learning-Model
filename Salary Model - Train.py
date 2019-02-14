@@ -83,7 +83,7 @@ def main(argv):
                         hidden_units=[31, 22, 15, 12],
                         feature_columns=feature_columns,
                         config=my_checkpointing_config,
-                        model_dir='saved'
+                        model_dir='edited'
     )
     
     # Train the model.
@@ -105,15 +105,16 @@ def main(argv):
     print("\nSaved at: " + model.model_dir + "\n")
     
     
-    expected = [38]
+    expected = [41]
     predict_x = {
+          #Arenado projected 2019
           #'Age': [26],
-          'AB':[549],
-          'H': [173],
-          'R': [123],
-          'RBI': [100],
-          'HR': [29],
-          'SB': [30]
+          'AB':[595],
+          'H': [179],
+          'R': [104],
+          'RBI': [120],
+          'HR': [38],
+          'SB': [2]
                         
       }
 

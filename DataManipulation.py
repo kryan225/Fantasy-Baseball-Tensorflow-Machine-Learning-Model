@@ -33,7 +33,7 @@ import matplotlib
 #data18n = pd.read_csv("2018_N_B.csv")
 
 ##combine above dataframes into one dataframe
-allData = pd.read_csv("combinedCSV.csv")#pd.concat([data16a,data16n,data17a, data17n, data18a, data18n])
+allData = pd.read_csv("combinedCSV - edited.csv")#pd.concat([data16a,data16n,data17a, data17n, data18a, data18n])
 
 
 def clean(df):
