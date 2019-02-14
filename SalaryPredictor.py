@@ -146,3 +146,17 @@ def runBatchPredict(file, modelPath='saved'):
         
     sorted_d = sorted(newDict.items(), key=operator.itemgetter(1), reverse=True)
     return sorted_d
+    
+
+def exportProjections(newFile, projectionsFile='projections.csv', model_dir='edited'):
+    projections = pd.read_csv(projectionsFile)
+    predictions = runBatchPredict(projectionsFile, model_dir)
+    newDF = pd.DataFrame()
+    
+    for i in predictions:
+        projections['Sal'] = i[1]
+        newRow = projections.loc[projections['Player'] == i[0]]
+        newDF = newDF.append(newRow)
+        
+    DM.export(newDF, newFile)
+    print('Exported!')
