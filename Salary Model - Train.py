@@ -107,7 +107,7 @@ def main(argv):
     
     expected = [41]
     predict_x = {
-          #Arenado projected 2019
+          #Arenado projected 2019 - better than 2018
           #'Age': [26],
           'AB':[595],
           'H': [179],

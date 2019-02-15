@@ -39,7 +39,7 @@ allData = pd.read_csv("combinedCSV - edited.csv")#pd.concat([data16a,data16n,dat
 def clean(df):
     '''Cleans a dataframe from all players with not enough at bats, or if their value is too low'''
     df = df[df.AB > 170]
-    df = df[df['R$'] >= 0]
+    #df = df[df['R$'] >= 0]
     
     return df
 
@@ -95,7 +95,7 @@ def offLoad(df = clean(offData)):
     labels = df['R$']
     
     ##divide the data into training and testing splits with 20% to be a testing split
-    trainx, testx, trainy, testy = train_test_split(features, labels, test_size=.2)
+    trainx, testx, trainy, testy = train_test_split(features, labels, test_size=.1)
     return (trainx, trainy), (testx, testy)
     
 ##set variables for the train test splits

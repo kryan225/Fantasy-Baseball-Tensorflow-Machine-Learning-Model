@@ -18,8 +18,9 @@ any questions or comments please email me at: kryan225.gomets@gmail.com
 @author: kryan
 """
 import Batter as bat
-import Pandas as pd
-import Numpy as np
+import pandas as pd
+import numpy as np
+from random import randint
 
 class Team:
     def __init__(self, Name, c1=None, c2=None, first=None, second=None, third=None, short=None, mid=None, cornr=None,
@@ -49,8 +50,17 @@ I will begin to test creating a team in a dataframe and then decide which method
         
 
 
+players = pd.read_csv('predictions.csv')
+budget = 200
+team = pd.DataFrame()#columns = ['Player', 'AB', 'H', 'R', 'HR', 'RBI', 'SB', 'Sal'])
+team = team.append(players.loc[players['Player'] == 'Mike Trout CF | LAA '])
 
 
+while budget > 0:
+    rand = randint(0,len(players.index - 1))
+    team = team.append(players.iloc[rand])
+    players = players.drop(players.index[rand])
+    budget = 200 - team['Sal'].sum()
 
 
 
