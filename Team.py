@@ -46,6 +46,7 @@ I wonder if it will be easier to just use a pandas dataframe to represent a team
 
 
 I will begin to test creating a team in a dataframe and then decide which method to go with
+
 '''
         
 

@@ -83,7 +83,7 @@ def main(argv):
                         hidden_units=[31, 22, 15, 12],
                         feature_columns=feature_columns,
                         config=my_checkpointing_config,
-                        model_dir='edited'
+                        #model_dir='edited'
     )
     
     # Train the model.
@@ -102,6 +102,7 @@ def main(argv):
     print("\nRMS error for the test set: {:.0f} dollars"
           #.format(PRICE_NORM_FACTOR * average_loss**0.5))
         .format(average_loss))
+    print(eval_result)
     print("\nSaved at: " + model.model_dir + "\n")
     
     

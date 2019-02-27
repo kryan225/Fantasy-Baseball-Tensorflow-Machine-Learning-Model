@@ -24,7 +24,7 @@ from sklearn.model_selection import train_test_split
 import tensorflow as tf
 import matplotlib
 
-##import 4 csv files with historical data from 2018-2015
+##import csv files with historical data from 2016-2018
 #data16a = pd.read_csv("2016_A_B.csv")
 #data16n = pd.read_csv("2016_N_B.csv")
 #data17a = pd.read_csv("2017_A_B.csv")
@@ -33,7 +33,16 @@ import matplotlib
 #data18n = pd.read_csv("2018_N_B.csv")
 
 ##combine above dataframes into one dataframe
-allData = pd.read_csv("combinedCSV - edited.csv")#pd.concat([data16a,data16n,data17a, data17n, data18a, data18n])
+allData = pd.read_csv("Positions.csv")#pd.concat([data16a,data16n,data17a, data17n, data18a, data18n])#pd.read_csv("combinedCSV - edited.csv")#
+
+
+def convertPositions(df):
+    '''Converts the position columns from strings to listof(char)'''
+    ret = pd.DataFrame()
+    for index, row in df.iterrows():
+        row['Pos'] = list(row['Pos'])
+        ret = ret.append(row)
+    return ret
 
 
 def clean(df):
@@ -48,7 +57,7 @@ def getOstats(df):
         Offesensive stats"""
 
     condence = pd.DataFrame()
-    condence = df[['Player', 'Age','AB','H','R','RBI','HR','SB','R$']]
+    condence = df[['Player', 'Pos','Age','AB','H','R','RBI','HR','SB','R$']]
     condence = condence.reset_index()
 
     return condence.sort_values(by=['R$'], ascending=False)
@@ -75,7 +84,7 @@ def norm(df):
         
 ##define a dataframe that has condenced, normalized offensive categories   
 offData = getOstats(allData)
-normData = norm(offData)
+#normData = norm(offData)
 
 def offLoad(df = clean(offData)):
     """Takes a dataframe and prepares it to be given to a tensorflow model
@@ -92,6 +101,7 @@ def offLoad(df = clean(offData)):
     features['RBI'] = df['RBI']
     features['HR'] = df['HR']
     features['SB'] = df['SB']
+
     labels = df['R$']
     
     ##divide the data into training and testing splits with 20% to be a testing split
@@ -99,7 +109,36 @@ def offLoad(df = clean(offData)):
     return (trainx, trainy), (testx, testy)
     
 ##set variables for the train test splits
-(trainx, trainy), (testx, testy) = offLoad()
+##(trainx, trainy), (testx, testy) = offLoad()
+
+def posToInt(pos):
+    if pos == " C":
+        return 2
+    elif pos == "1B":
+        return 3
+    elif pos == "2B":
+        return 4
+    elif pos == "3B":
+        return 5
+    elif pos == "SS":
+        return 6
+    elif pos in ["LF", "CF", "RF"]:
+        return 7
+    elif pos == "DH":
+        return 0
+
+predictions = pd.read_csv("predictions.csv");
+def parsePredictions(dfram = predictions):
+    retDF = pd.DataFrame()
+    for index, row in dfram.iterrows():
+        
+        name = row['Player']
+        for c in enumerate(name):
+            if c[1] == "|" :
+                row['Pos'] = (posToInt(name[c[0]-3:c[0] - 1]))
+        retDF = retDF.append(row)
+    return retDF
+
 
 
 
