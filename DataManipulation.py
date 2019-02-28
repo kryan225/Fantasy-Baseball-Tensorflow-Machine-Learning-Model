@@ -125,7 +125,7 @@ def posToInt(pos):
     elif pos in ["LF", "CF", "RF"]:
         return 7
     elif pos == "DH":
-        return 0
+        return 7 # set them as outfielders bc I'm pretty sure they all qualify at OF
 
 predictions = pd.read_csv("predictions.csv");
 def parsePredictions(dfram = predictions):

@@ -17,10 +17,12 @@ any questions or comments please email me at: kryan225.gomets@gmail.com
 
 @author: kryan
 """
+import DataManipulation as DM
 import Batter as bat
 import pandas as pd
 import numpy as np
 from random import randint
+from functools import reduce
 
 class Team:
     def __init__(self, Name, c1=None, c2=None, first=None, second=None, third=None, short=None, mid=None, cornr=None,
@@ -40,33 +42,158 @@ class Team:
         self.OF4 = of4
         self.OF5 = of5
         self.Utility = util
+    
+    def printTeam(self):
+        if self.isComplete():
+            print(self.Name)
+            print(self.Catcher1['Player'] , "  -  " , self.Catcher1['Sal'])
+            print(self.Catcher2['Player'] , "  -  " , self.Catcher2['Sal'])
+            print(self.First['Player'] , "  -  " , self.First['Sal'])
+            print(self.Second['Player'] , "  -  " , self.Second['Sal'])
+            print(self.Third['Player'] , "  -  " , self.Third['Sal'])
+            print(self.Shortstop['Player'] , "  -  " , self.Shortstop['Sal'])
+            print(self.MiddleINF['Player'] , "  -  " , self.MiddleINF['Sal'] )
+            print(self.CornerINF['Player'] , "  -  " , self.CornerINF['Sal'] )
+            print(self.OF1['Player']  , "  -  " , self.OF1['Sal'])
+            print(self.OF2['Player']  , "  -  " , self.OF2['Sal'])
+            print(self.OF3['Player'] , "  -  " , self.OF3['Sal'])
+            print(self.OF4['Player'] , "  -  " , self.OF4['Sal'] )
+            print(self.OF5['Player'] , "  -  " , self.OF5['Sal'] )
+            print(self.Utility['Player'] , "  -  " , self.Utility['Sal']) 
+        else:
+            print("Team not finished")
         
-'''
-I wonder if it will be easier to just use a pandas dataframe to represent a team instead of making a new object.
-
-
-I will begin to test creating a team in a dataframe and then decide which method to go with
-
-'''
+    
+    def isComplete(self):
+        '''
+        Checks to see if all postions are filled on the team - returns true is team has all positions filled
+        '''
+        emtAttrs = [self.Catcher1 is None, self.Catcher2 is None, self.First is None, self.Second is None, self.Third is None,
+                    self.Shortstop is None, self.MiddleINF is None, self.CornerINF is None, self.OF1 is None, self.OF2 is None,
+                    self.OF3 is None, self.OF4 is None, self.OF5 is None, self.Utility is None]
+        ret = True
+        for a in emtAttrs:
+            ret = ret and (not a)
+        return ret
+        
+    def getOffensiveBudget(self):
+        if self.isComplete():
+            ret = 0
+            dic = self.__dict__
+            for a in self.__dict__:
+                if a is not 'Name':
+                    ret = ret + dic[a]['Sal']
+            return ret
+        else:
+            return "team is not finished yet"
+        
+        
+    def addBatter(self, batter):
+        '''
+        Adds a batter to the proper position 
+        '''
+        pos = batter['Pos']
+        if pos == 2:
+            if self.Catcher1 is None:
+                self.Catcher1 = batter
+            elif self.Catcher2 is None:
+                self.Catcher2 = batter
+            elif self.Utility is None:
+                self.Utility = batter
+            else:
+                return False
+        elif pos == 3:
+            if self.First is None:
+                self.First = batter
+            elif self.CornerINF is None:
+                self.CornerINF = batter
+            elif self.Utility is None:
+                self.Utility = batter
+            else:
+                return False
+        elif pos == 4:
+            if self.Second is None:
+                self.Second = batter
+            elif self.MiddleINF is None:
+                self.MiddleINF = batter
+            elif self.Utility is None:
+                self.Utility = batter
+            else:
+                return False
+        elif pos == 5:
+            if self.Third is None:
+                self.Third = batter
+            elif self.CornerINF is None:
+                self.CornerINF = batter
+            elif self.Utility is None:
+                self.Utility = batter
+            else:
+                return False
+        elif pos == 6:
+            if self.Shortstop is None:
+                self.Shortstop = batter
+            elif self.MiddleINF is None:
+                self.MiddleINF = batter
+            elif self.Utility is None:
+                self.Utility = batter
+            else:
+                return False
+        elif pos == 7:
+            if self.OF1 is None:
+                self.OF1 = batter
+            elif self.OF2 is None:
+                self.OF2 = batter
+            elif self.OF3 is None:
+                self.OF3 = batter
+            elif self.OF4 is None:
+                self.OF4 = batter
+            elif self.OF4 is None:
+                self.OF4 = batter
+            elif self.OF5 is None:
+                self.OF5 = batter
+            elif self.Utility is None:
+                self.Utility = batter
+            else:
+                return False
+        elif pos == 0:
+            if self.Utility is None:
+                self.Utility = batter
+            else:
+                return False
+        else:
+            return False
+        
+        
         
 
 
-players = pd.read_csv('predictions.csv')
-budget = 200
+
+'''
 team = pd.DataFrame()#columns = ['Player', 'AB', 'H', 'R', 'HR', 'RBI', 'SB', 'Sal'])
 team = team.append(players.loc[players['Player'] == 'Mike Trout CF | LAA '])
+'''
 
-
-while budget > 0:
-    rand = randint(0,len(players.index - 1))
-    team = team.append(players.iloc[rand])
-    players = players.drop(players.index[rand])
-    budget = 200 - team['Sal'].sum()
-
-
+def randomTeam(csv = "predictions.csv"):
+    players = pd.read_csv(csv)
+    players = DM.parsePredictions(players)
+    budget = 200
+    team = Team('Random')
+    rand = 0
+    while not team.isComplete():
+        #randint(0,len(players.index - 1))
+        p1 = players.iloc[rand]
+        rand = rand + 1
+        if team.addBatter(p1) is not False:
+            budget = budget - p1['Sal']
+        players.reset_index();
+        
+    team.printTeam()
+    return team
+    
+team = randomTeam()
 
 def main():
-    print()
+    
     '''
     b1 = bat.Batter('Arenado', [5], 499, 140, 100, 40, 100, 3, 41)
     b1.printPlayer()
