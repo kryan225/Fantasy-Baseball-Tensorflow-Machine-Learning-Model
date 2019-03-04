@@ -20,6 +20,8 @@ import tensorflow as tf
 import numpy as np
 import pandas as pd
 import DataManipulation as DM
+from sklearn.utils import shuffle
+from sklearn.cross_validation import KFold
 
 
 glob = 0
@@ -40,11 +42,11 @@ feature_specs_glob = {
                    'SB': tf.VarLenFeature(dtype=tf.int64),
                    }
                    
-def main(argv):
+def train(train_x, train_y, test_x, test_y):
     '''builds trains and evaluates the model'''
     
     #get the train/test data
-    (train_x, train_y), (test_x, test_y) = DM.offLoad()
+    
     
     #build the feature columns
     ageCol = tf.feature_column.numeric_column(key='Age')
@@ -130,13 +132,36 @@ def main(argv):
   
     for pred_dict, expec in zip(predictions, expected):
         print(template.format(pred_dict["predictions"][0], expec))
+    print('')
+    return average_loss
+    
+
+def kfoldCrossValidate(k):
+    df = shuffle(DM.clean(DM.offData))
+    loss = []
+    rows = len(df.index)
+    kf = KFold(rows, n_folds=k)
+    for train_index, test_index in kf:
+        train_set = df.iloc[train_index]
+        test_set = df.iloc[test_index]
+        train_x = train_set.drop(['R$'],axis=1)
+        train_y = train_set['R$']
+        test_x = test_set.drop(['R$'],axis=1)
+        test_y = test_set['R$']
+        l = train(train_x, train_y, test_x, test_y)
+        loss.append(l)
+    
+    return loss
     
     
-    
-    
-    
-    
-    
+def main(argv):
+    #(train_x, train_y), (test_x, test_y) = DM.offLoad()
+    #train(train_x, train_y, test_x, test_y)
+    #losses = kfoldCrossValidate(8)
+    print("-"*30)
+    #print("Average loss for kfold validation: ", sum(losses)/len(losses))
+    #Average loss for kfold validation:  3.50362616777  -- with 8 folds
+    print("-"*30)
     
 if __name__ == "__main__":
   # The Estimator periodically generates "INFO" logs; make these logs visible.
