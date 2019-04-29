@@ -25,9 +25,9 @@ from random import randint
 from functools import reduce
 
 class Team:
-    def __init__(self, Name, c1=None, c2=None, first=None, second=None, third=None, short=None, mid=None, cornr=None,
+    def __init__(self, c1=None, c2=None, first=None, second=None, third=None, short=None, mid=None, cornr=None,
                  of1=None, of2=None, of3=None, of4=None, of5=None, util=None):
-        self.Name = Name
+        #self.Name = Name
         self.Catcher1 = c1
         self.Catcher2 = c2
         self.First = first
@@ -42,27 +42,25 @@ class Team:
         self.OF4 = of4
         self.OF5 = of5
         self.Utility = util
-    
-    def printTeam(self):
-        if self.isComplete():
-            print(self.Name)
-            print(self.Catcher1['Player'] , "  -  " , self.Catcher1['Sal'])
-            print(self.Catcher2['Player'] , "  -  " , self.Catcher2['Sal'])
-            print(self.First['Player'] , "  -  " , self.First['Sal'])
-            print(self.Second['Player'] , "  -  " , self.Second['Sal'])
-            print(self.Third['Player'] , "  -  " , self.Third['Sal'])
-            print(self.Shortstop['Player'] , "  -  " , self.Shortstop['Sal'])
-            print(self.MiddleINF['Player'] , "  -  " , self.MiddleINF['Sal'] )
-            print(self.CornerINF['Player'] , "  -  " , self.CornerINF['Sal'] )
-            print(self.OF1['Player']  , "  -  " , self.OF1['Sal'])
-            print(self.OF2['Player']  , "  -  " , self.OF2['Sal'])
-            print(self.OF3['Player'] , "  -  " , self.OF3['Sal'])
-            print(self.OF4['Player'] , "  -  " , self.OF4['Sal'] )
-            print(self.OF5['Player'] , "  -  " , self.OF5['Sal'] )
-            print(self.Utility['Player'] , "  -  " , self.Utility['Sal']) 
-        else:
-            print("Team not finished")
         
+    def attrs(self):
+        return [a for a in dir(self) if not a.startswith('__') and not callable(getattr(self,a))]
+    
+    def printTeam(self, atr = 'Player'):
+        tm = []
+        for a in self.attrs():
+            if getattr(self, a) is not None:
+               # print(a, ' - ', getattr(self,a)[atr])
+                tm.append(getattr(self,a)[atr])
+        return tm
+            
+        '''
+        MRCHEATSHEET - JOHNATHANS TOOL **********************************************************************************
+        
+        
+        *****************************************************************************************************************
+        
+        '''
     
     def isComplete(self):
         '''
@@ -76,17 +74,33 @@ class Team:
             ret = ret and (not a)
         return ret
         
+    def getOpen(self):
+        '''
+        Prints all open positions
+        '''
+        opn = []
+        for a in self.attrs():
+            if getattr(self, a) is None:
+                opn.append(a)
+        return opn
+            
     def getOffensiveBudget(self):
-        if self.isComplete():
-            ret = 0
-            dic = self.__dict__
-            for a in self.__dict__:
-                if a is not 'Name':
-                    ret = ret + dic[a]['Sal']
-            return ret
-        else:
-            return "team is not finished yet"
+        b = 0
+        for a in self.attrs():
+            player = getattr(self,a)
+            if player is None:
+                b = b + 0
+            else:
+                b = b + player['Sal']
+        return b
         
+    def buildPD(self):
+        df = pd.DataFrame()
+        opn = self.getOpen()
+        for a in self.attrs():
+            if a not in opn:
+                df = df.append(getattr(self, a))
+        return df
         
     def addBatter(self, batter):
         '''
@@ -173,9 +187,15 @@ team = pd.DataFrame()#columns = ['Player', 'AB', 'H', 'R', 'HR', 'RBI', 'SB', 'S
 team = team.append(players.loc[players['Player'] == 'Mike Trout CF | LAA '])
 '''
 
-def randomTeam(csv = "predictions.csv"):
-    players = pd.read_csv(csv)
-    players = DM.parsePredictions(players)
+def randomTeam(csv = DM.predictions):
+    '''
+    Forms a random team that will be beneath a specified budget
+    -- budget fixed at $200 for now --
+    
+    **currently just returns most expensive team possible**
+    '''
+    #players = pd.read_csv(csv)
+    players = DM.parsePredictions(csv)
     budget = 200
     team = Team('Random')
     rand = 0
@@ -190,7 +210,26 @@ def randomTeam(csv = "predictions.csv"):
     team.printTeam()
     return team
     
-team = randomTeam()
+
+def optimalTeam(budget, team = Team(), csv = DM.predictions):  
+    budget -= team.getOffensiveBudget()
+    stats = DM.parsePredictions(csv)
+    players = DM.ready(stats)
+    players['VAL'] = (players['H'] + players['HR'] + players['RBI'] + players['R'] + players['SB'])
+    players = players.sort_values('VAL', ascending=False)
+    for index, row in players.iterrows():
+        if budget - row['Sal'] > len(team.getOpen()):
+            budget = budget - row['Sal'] 
+            name =  row['Player']
+            bttr = stats.loc[stats['Player'] == name].squeeze()
+            
+            team.addBatter(bttr)
+    #team.printTeam()
+    return team, players
+        
+team, players = optimalTeam(200)
+
+
 
 def main():
     

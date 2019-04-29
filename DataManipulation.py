@@ -65,12 +65,19 @@ def getOstats(df):
 
 
 def norm(df):
+    '''
+    Normalizes all numerical columns in a player DF except for position, R$, and Sal
+    '''
     normalizedDF = pd.DataFrame()
     for colName in df.columns:
         newCol = []
         if colName == 'Player':
             normalizedDF[colName] = df[colName]
         elif colName == 'R$':
+            normalizedDF[colName] = df[colName]
+        elif colName == 'Sal':
+            normalizedDF[colName] = df[colName]
+        elif colName == 'Pos':
             normalizedDF[colName] = df[colName]
         else:   
             mx = max(df[colName])
@@ -82,6 +89,18 @@ def norm(df):
             
     return normalizedDF
         
+    
+def ready(df):
+    '''
+    Adds a column to normalized DF that has the sum of the important normalized categories 
+    '''
+    ret = pd.DataFrame()
+    nrm = norm(df)
+    for index, row in nrm.iterrows():
+        tot = row['H'] + row['R'] + row['HR'] + row['RBI'] + row['SB']
+        row['tot'] = tot
+        ret = ret.append(row)
+    return ret
 ##define a dataframe that has condenced, normalized offensive categories   
 offData = getOstats(allData)
 #normData = norm(offData)

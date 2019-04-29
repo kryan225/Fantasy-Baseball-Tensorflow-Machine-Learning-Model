@@ -137,6 +137,9 @@ def train(train_x, train_y, test_x, test_y):
     
 
 def kfoldCrossValidate(k):
+    '''
+    cross validate the model
+    '''
     df = shuffle(DM.clean(DM.offData))
     loss = []
     rows = len(df.index)
@@ -155,8 +158,8 @@ def kfoldCrossValidate(k):
     
     
 def main(argv):
-    #(train_x, train_y), (test_x, test_y) = DM.offLoad()
-    #train(train_x, train_y, test_x, test_y)
+    (train_x, train_y), (test_x, test_y) = DM.offLoad()
+    train(train_x, train_y, test_x, test_y)
     #losses = kfoldCrossValidate(8)
     print("-"*30)
     #print("Average loss for kfold validation: ", sum(losses)/len(losses))
