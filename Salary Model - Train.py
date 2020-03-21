@@ -20,6 +20,8 @@ import tensorflow as tf
 import numpy as np
 import pandas as pd
 import DataManipulation as DM
+from sklearn.utils import shuffle
+from sklearn.cross_validation import KFold
 
 
 glob = 0
@@ -40,11 +42,11 @@ feature_specs_glob = {
                    'SB': tf.VarLenFeature(dtype=tf.int64),
                    }
                    
-def main(argv):
+def train(train_x, train_y, test_x, test_y):
     '''builds trains and evaluates the model'''
     
     #get the train/test data
-    (train_x, train_y), (test_x, test_y) = DM.offLoad()
+    
     
     #build the feature columns
     ageCol = tf.feature_column.numeric_column(key='Age')
@@ -83,7 +85,7 @@ def main(argv):
                         hidden_units=[31, 22, 15, 12],
                         feature_columns=feature_columns,
                         config=my_checkpointing_config,
-                        model_dir='saved'
+                        #model_dir='edited'
     )
     
     # Train the model.
@@ -102,18 +104,20 @@ def main(argv):
     print("\nRMS error for the test set: {:.0f} dollars"
           #.format(PRICE_NORM_FACTOR * average_loss**0.5))
         .format(average_loss))
+    print(eval_result)
     print("\nSaved at: " + model.model_dir + "\n")
     
     
-    expected = [38]
+    expected = [41]
     predict_x = {
+          #Arenado projected 2019 - better than 2018
           #'Age': [26],
-          'AB':[549],
-          'H': [173],
-          'R': [123],
-          'RBI': [100],
-          'HR': [29],
-          'SB': [30]
+          'AB':[595],
+          'H': [179],
+          'R': [104],
+          'RBI': [120],
+          'HR': [38],
+          'SB': [2]
                         
       }
 
@@ -128,13 +132,39 @@ def main(argv):
   
     for pred_dict, expec in zip(predictions, expected):
         print(template.format(pred_dict["predictions"][0], expec))
+    print('')
+    return average_loss
+    
+
+def kfoldCrossValidate(k):
+    '''
+    cross validate the model
+    '''
+    df = shuffle(DM.clean(DM.offData))
+    loss = []
+    rows = len(df.index)
+    kf = KFold(rows, n_folds=k)
+    for train_index, test_index in kf:
+        train_set = df.iloc[train_index]
+        test_set = df.iloc[test_index]
+        train_x = train_set.drop(['R$'],axis=1)
+        train_y = train_set['R$']
+        test_x = test_set.drop(['R$'],axis=1)
+        test_y = test_set['R$']
+        l = train(train_x, train_y, test_x, test_y)
+        loss.append(l)
+    
+    return loss
     
     
-    
-    
-    
-    
-    
+def main(argv):
+    (train_x, train_y), (test_x, test_y) = DM.offLoad()
+    train(train_x, train_y, test_x, test_y)
+    #losses = kfoldCrossValidate(8)
+    print("-"*30)
+    #print("Average loss for kfold validation: ", sum(losses)/len(losses))
+    #Average loss for kfold validation:  3.50362616777  -- with 8 folds
+    print("-"*30)
     
 if __name__ == "__main__":
   # The Estimator periodically generates "INFO" logs; make these logs visible.

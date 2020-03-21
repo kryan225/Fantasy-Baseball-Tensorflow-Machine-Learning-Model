@@ -24,7 +24,7 @@ from sklearn.model_selection import train_test_split
 import tensorflow as tf
 import matplotlib
 
-##import 4 csv files with historical data from 2018-2015
+##import csv files with historical data from 2016-2018
 #data16a = pd.read_csv("2016_A_B.csv")
 #data16n = pd.read_csv("2016_N_B.csv")
 #data17a = pd.read_csv("2017_A_B.csv")
@@ -33,13 +33,22 @@ import matplotlib
 #data18n = pd.read_csv("2018_N_B.csv")
 
 ##combine above dataframes into one dataframe
-allData = pd.read_csv("combinedCSV.csv")#pd.concat([data16a,data16n,data17a, data17n, data18a, data18n])
+allData = pd.read_csv("Positions.csv")#pd.concat([data16a,data16n,data17a, data17n, data18a, data18n])#pd.read_csv("combinedCSV - edited.csv")#
+
+
+def convertPositions(df):
+    '''Converts the position columns from strings to listof(char)'''
+    ret = pd.DataFrame()
+    for index, row in df.iterrows():
+        row['Pos'] = list(row['Pos'])
+        ret = ret.append(row)
+    return ret
 
 
 def clean(df):
     '''Cleans a dataframe from all players with not enough at bats, or if their value is too low'''
     df = df[df.AB > 170]
-    df = df[df['R$'] >= 0]
+    #df = df[df['R$'] >= 0]
     
     return df
 
@@ -48,7 +57,7 @@ def getOstats(df):
         Offesensive stats"""
 
     condence = pd.DataFrame()
-    condence = df[['Player', 'Age','AB','H','R','RBI','HR','SB','R$']]
+    condence = df[['Player', 'Pos','Age','AB','H','R','RBI','HR','SB','R$']]
     condence = condence.reset_index()
 
     return condence.sort_values(by=['R$'], ascending=False)
@@ -56,12 +65,19 @@ def getOstats(df):
 
 
 def norm(df):
+    '''
+    Normalizes all numerical columns in a player DF except for position, R$, and Sal
+    '''
     normalizedDF = pd.DataFrame()
     for colName in df.columns:
         newCol = []
         if colName == 'Player':
             normalizedDF[colName] = df[colName]
         elif colName == 'R$':
+            normalizedDF[colName] = df[colName]
+        elif colName == 'Sal':
+            normalizedDF[colName] = df[colName]
+        elif colName == 'Pos':
             normalizedDF[colName] = df[colName]
         else:   
             mx = max(df[colName])
@@ -73,9 +89,21 @@ def norm(df):
             
     return normalizedDF
         
+    
+def ready(df):
+    '''
+    Adds a column to normalized DF that has the sum of the important normalized categories 
+    '''
+    ret = pd.DataFrame()
+    nrm = norm(df)
+    for index, row in nrm.iterrows():
+        tot = row['H'] + row['R'] + row['HR'] + row['RBI'] + row['SB']
+        row['tot'] = tot
+        ret = ret.append(row)
+    return ret
 ##define a dataframe that has condenced, normalized offensive categories   
 offData = getOstats(allData)
-normData = norm(offData)
+#normData = norm(offData)
 
 def offLoad(df = clean(offData)):
     """Takes a dataframe and prepares it to be given to a tensorflow model
@@ -92,14 +120,44 @@ def offLoad(df = clean(offData)):
     features['RBI'] = df['RBI']
     features['HR'] = df['HR']
     features['SB'] = df['SB']
+
     labels = df['R$']
     
     ##divide the data into training and testing splits with 20% to be a testing split
-    trainx, testx, trainy, testy = train_test_split(features, labels, test_size=.2)
+    trainx, testx, trainy, testy = train_test_split(features, labels, test_size=.1)
     return (trainx, trainy), (testx, testy)
     
 ##set variables for the train test splits
-(trainx, trainy), (testx, testy) = offLoad()
+##(trainx, trainy), (testx, testy) = offLoad()
+
+def posToInt(pos):
+    if pos == " C":
+        return 2
+    elif pos == "1B":
+        return 3
+    elif pos == "2B":
+        return 4
+    elif pos == "3B":
+        return 5
+    elif pos == "SS":
+        return 6
+    elif pos in ["LF", "CF", "RF"]:
+        return 7
+    elif pos == "DH":
+        return 7 # set them as outfielders bc I'm pretty sure they all qualify at OF
+
+predictions = pd.read_csv("predictions.csv");
+def parsePredictions(dfram = predictions):
+    retDF = pd.DataFrame()
+    for index, row in dfram.iterrows():
+        
+        name = row['Player']
+        for c in enumerate(name):
+            if c[1] == "|" :
+                row['Pos'] = (posToInt(name[c[0]-3:c[0] - 1]))
+        retDF = retDF.append(row)
+    return retDF
+
 
 
 
