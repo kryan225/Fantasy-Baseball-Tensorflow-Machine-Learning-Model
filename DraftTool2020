@@ -1,7 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Sat Mar 21 16:50:56 2020
+Created on Sat Mar 21 16:04:00 2020
+
+I want this tool to be usuable during a draft
+
+TODO:
+    - Be able to hold 1 team with real players from csv
+    - Be able to hold 12 teams with real players from csv
+    - Track players who have been drafted and who is still left in the pool
+    - Track salaries of players and total $$ left for a given team
+    - Calculate the cost of relevant stats based on current draft
+        - Use this to calculate players who are deals/expensive
+    - Dynamically adjust for inlfation/deflation for current players based on current draft salaries and stat costs
+    
 
 @author: kryan225
 """
