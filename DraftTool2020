@@ -6,7 +6,10 @@ Created on Sat Mar 21 16:04:00 2020
 I want this tool to be usuable during a draft
 
 TODO:
-    - Be able to hold 1 team with real players from csv
+    - Be able to hold 1 team with real players
+        - Hold 1 team with players from csv
+        ***We can make a team from a csv with no budget enforced***
+        
     - Be able to hold 12 teams with real players from csv
     - Track players who have been drafted and who is still left in the pool
     - Track salaries of players and total $$ left for a given team
@@ -17,4 +20,11 @@ TODO:
 
 @author: kryan225
 """
+
+
+import Team
+import Batter
+import pandas as pd
+
+playerPool = pd.read_csv('Positions.csv')
 

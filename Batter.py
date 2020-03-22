@@ -14,8 +14,11 @@ any questions or comments please email me at: kryan225.gomets@gmail.com
 
 @author: kryan
 """
+import enum
 
-class Batter:
+    
+class Batter():
+
     def __init__(self, Name, Pos, AB, H, R, HR, RBI, SB, Salary):
         self.Name = Name
         self.Pos = Pos
@@ -26,6 +29,9 @@ class Batter:
         self.RBI = RBI
         self.SB = SB
         self.Salary = Salary
+        
+    #def __getitem__(self, item):
+    #     return self.Batter[item]
         
         
     def getAVG(self):
@@ -53,5 +59,5 @@ def makeBatter(df):
     '''
     should take a single row of fantasy data from a dataframe and convert it into a batter object
     '''
-    ret = Batter(df['Player'], df['Pos'], df['AB'], df['H'], df['R'], df['HR'], df['RBI'], df['SB'], df['Sal'])
+    ret = Batter(df['Player'], df['Pos'], df['AB'], df['H'], df['R'], df['HR'], df['RBI'], df['SB'], df['R$'])
     return ret

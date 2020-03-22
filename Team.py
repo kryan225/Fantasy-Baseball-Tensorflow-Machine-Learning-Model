@@ -24,10 +24,11 @@ import numpy as np
 from random import randint
 from functools import reduce
 
+
 class Team:
-    def __init__(self, c1=None, c2=None, first=None, second=None, third=None, short=None, mid=None, cornr=None,
+    def __init__(self, Name, c1=None, c2=None, first=None, second=None, third=None, short=None, mid=None, cornr=None,
                  of1=None, of2=None, of3=None, of4=None, of5=None, util=None):
-        #self.Name = Name
+        self.Name = Name
         self.Catcher1 = c1
         self.Catcher2 = c2
         self.First = first
@@ -44,15 +45,21 @@ class Team:
         self.Utility = util
         
     def attrs(self):
-        return [a for a in dir(self) if not a.startswith('__') and not callable(getattr(self,a))]
+        return [a for a in dir(self) if not a.startswith('__') and not callable(getattr(self,a)) and a is not 'Name']
+    
+    def get(self, atr):
+        return getattr(self, atr)
+    
+    def set(self, atr, val):
+        return setattr(self, atr, val)
     
     def printTeam(self, atr = 'Player'):
-        tm = []
+        tm = ''
         for a in self.attrs():
             if getattr(self, a) is not None:
                # print(a, ' - ', getattr(self,a)[atr])
-                tm.append(getattr(self,a)[atr])
-        return tm
+                tm += a + ' - ' + getattr(self,a).Name + '\n'
+        print(tm)
             
         '''
         MRCHEATSHEET - JOHNATHANS TOOL **********************************************************************************
@@ -88,10 +95,8 @@ class Team:
         b = 0
         for a in self.attrs():
             player = getattr(self,a)
-            if player is None:
-                b = b + 0
-            else:
-                b = b + player['Sal']
+            if player is not None:
+                b += player.Salary
         return b
         
     def buildPD(self):
@@ -101,13 +106,32 @@ class Team:
             if a not in opn:
                 df = df.append(getattr(self, a))
         return df
+    
+    
+    '''
+    Moves a batter to a new specified position
+    '''
+    def moveBatter(self, batterName, newPosition):
+        wasSuccessfull = False
+        for a in self.attrs():
+            if self.get(a) is not None and self.get(a).Name == batterName and not wasSuccessfull:                
+                self.set(newPosition, self.get(a))
+                self.set(a, None)
+                print('Moving ' + batterName + ' to ' + newPosition)
+                wasSuccessfull = True
+        if not wasSuccessfull:
+            print('Unable to find ' + batterName)
+                
         
     def addBatter(self, batter):
         '''
         Adds a batter to the proper position 
         '''
-        pos = batter['Pos']
-        if pos == 2:
+        
+        
+        pos = batter.Pos
+        print(pos)
+        if '2' in pos:
             if self.Catcher1 is None:
                 self.Catcher1 = batter
             elif self.Catcher2 is None:
@@ -116,7 +140,7 @@ class Team:
                 self.Utility = batter
             else:
                 return False
-        elif pos == 3:
+        elif '3' in pos:
             if self.First is None:
                 self.First = batter
             elif self.CornerINF is None:
@@ -125,7 +149,7 @@ class Team:
                 self.Utility = batter
             else:
                 return False
-        elif pos == 4:
+        elif '4' in pos:
             if self.Second is None:
                 self.Second = batter
             elif self.MiddleINF is None:
@@ -134,7 +158,7 @@ class Team:
                 self.Utility = batter
             else:
                 return False
-        elif pos == 5:
+        elif '5' in pos:
             if self.Third is None:
                 self.Third = batter
             elif self.CornerINF is None:
@@ -143,7 +167,7 @@ class Team:
                 self.Utility = batter
             else:
                 return False
-        elif pos == 6:
+        elif '6' in pos:
             if self.Shortstop is None:
                 self.Shortstop = batter
             elif self.MiddleINF is None:
@@ -152,7 +176,7 @@ class Team:
                 self.Utility = batter
             else:
                 return False
-        elif pos == 7:
+        elif '7' in pos or '8' in pos or '9' in pos:
             if self.OF1 is None:
                 self.OF1 = batter
             elif self.OF2 is None:
@@ -169,13 +193,12 @@ class Team:
                 self.Utility = batter
             else:
                 return False
-        elif pos == 0:
+        else:
             if self.Utility is None:
                 self.Utility = batter
             else:
                 return False
-        else:
-            return False
+
         
         
         
@@ -187,31 +210,32 @@ team = pd.DataFrame()#columns = ['Player', 'AB', 'H', 'R', 'HR', 'RBI', 'SB', 'S
 team = team.append(players.loc[players['Player'] == 'Mike Trout CF | LAA '])
 '''
 
-def randomTeam(csv = DM.predictions):
-    '''
+
+
+    
+def randomTeam(teamName):
+    ''' 
     Forms a random team that will be beneath a specified budget
     -- budget fixed at $200 for now --
     
     **currently just returns most expensive team possible**
-    '''
-    #players = pd.read_csv(csv)
-    players = DM.parsePredictions(csv)
-    budget = 200
-    team = Team('Random')
-    rand = 0
-    while not team.isComplete():
-        #randint(0,len(players.index - 1))
-        p1 = players.iloc[rand]
-        rand = rand + 1
-        if team.addBatter(p1) is not False:
-            budget = budget - p1['Sal']
-        players.reset_index();
-        
-    team.printTeam()
-    return team
+    ''' 
+    randTeam = Team(teamName)
+    
+    pool = pd.read_csv('Positions.csv')
+    
+    for index, row in pool.iterrows():
+        if randTeam.isComplete():
+            return randTeam
+        batter = bat.makeBatter(row)
+        print(randTeam.addBatter(batter))
+    
+    return randTeam
+    
     
 
-def optimalTeam(budget, team = Team(), csv = DM.predictions):  
+'''
+def optimalTeam(budget, team = Team('Name'), csv = DM.predictions):  
     budget -= team.getOffensiveBudget()
     stats = DM.parsePredictions(csv)
     players = DM.ready(stats)
@@ -226,20 +250,25 @@ def optimalTeam(budget, team = Team(), csv = DM.predictions):
             team.addBatter(bttr)
     #team.printTeam()
     return team, players
-        
+
 team, players = optimalTeam(200)
 
+'''
+    
+b1 = bat.Batter('Arenado', [5], 499, 140, 100, 40, 100, 3, 41)
+b1.printPlayer()
 
+team1 = Team('Team1')
+team1.addBatter(b1)
+print(team1.printTeam())
 
+'''
 def main():
     
-    '''
-    b1 = bat.Batter('Arenado', [5], 499, 140, 100, 40, 100, 3, 41)
-    b1.printPlayer()
+    #comment for main lol
     
-    team1 = Team('Team1', b1)
-    team1.Catcher1.printPlayer()
-    '''
+    
         
 if __name__ == "__main__":
     main()
+'''
