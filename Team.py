@@ -58,7 +58,7 @@ class Team:
         for a in self.attrs():
             if getattr(self, a) is not None:
                # print(a, ' - ', getattr(self,a)[atr])
-                tm += a + ' - ' + getattr(self,a).Name + '\n'
+                tm += a + ' - ' + getattr(self,a).Name +  '  -- ' + str(getattr(self,a).Salary) +'\n'
         print(tm)
             
         '''
@@ -130,7 +130,7 @@ class Team:
         
         
         pos = batter.Pos
-        print(pos)
+        ret = True
         if '2' in pos:
             if self.Catcher1 is None:
                 self.Catcher1 = batter
@@ -139,7 +139,7 @@ class Team:
             elif self.Utility is None:
                 self.Utility = batter
             else:
-                return False
+                ret = False
         elif '3' in pos:
             if self.First is None:
                 self.First = batter
@@ -148,7 +148,7 @@ class Team:
             elif self.Utility is None:
                 self.Utility = batter
             else:
-                return False
+                ret = False
         elif '4' in pos:
             if self.Second is None:
                 self.Second = batter
@@ -157,7 +157,7 @@ class Team:
             elif self.Utility is None:
                 self.Utility = batter
             else:
-                return False
+                ret = False
         elif '5' in pos:
             if self.Third is None:
                 self.Third = batter
@@ -166,7 +166,7 @@ class Team:
             elif self.Utility is None:
                 self.Utility = batter
             else:
-                return False
+                ret = False
         elif '6' in pos:
             if self.Shortstop is None:
                 self.Shortstop = batter
@@ -175,7 +175,7 @@ class Team:
             elif self.Utility is None:
                 self.Utility = batter
             else:
-                return False
+                ret = False
         elif '7' in pos or '8' in pos or '9' in pos:
             if self.OF1 is None:
                 self.OF1 = batter
@@ -192,12 +192,13 @@ class Team:
             elif self.Utility is None:
                 self.Utility = batter
             else:
-                return False
+                ret = False
         else:
             if self.Utility is None:
                 self.Utility = batter
             else:
-                return False
+                ret = False
+        return ret
 
         
         
@@ -213,7 +214,7 @@ team = team.append(players.loc[players['Player'] == 'Mike Trout CF | LAA '])
 
 
     
-def randomTeam(teamName):
+def randomTeam(teamName, budget):
     ''' 
     Forms a random team that will be beneath a specified budget
     -- budget fixed at $200 for now --
@@ -228,7 +229,11 @@ def randomTeam(teamName):
         if randTeam.isComplete():
             return randTeam
         batter = bat.makeBatter(row)
-        print(randTeam.addBatter(batter))
+        maxBid = budget - len(randTeam.getOpen())
+        if batter.Salary < maxBid:
+            if randTeam.addBatter(batter):
+                budget = budget - batter.Salary
+                print('Added ' + batter.Name + 'for: ' + str(batter.Salary) + '   - New Max Bid: ' + str(maxBid - batter.Salary))
     
     return randTeam
     

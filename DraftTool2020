@@ -8,7 +8,8 @@ I want this tool to be usuable during a draft
 TODO:
     - Be able to hold 1 team with real players
         - Hold 1 team with players from csv
-        ***We can make a team from a csv with no budget enforced***
+        ***Can now form a random team enforcing a given offensive budget
+            ***Will get earliest player in csv that it can afford***
         
     - Be able to hold 12 teams with real players from csv
     - Track players who have been drafted and who is still left in the pool
