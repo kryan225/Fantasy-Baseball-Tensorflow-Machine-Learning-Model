@@ -21,6 +21,9 @@ import DataManipulation as DM
 import Batter as bat
 import pandas as pd
 import numpy as np
+#import DraftTool2020 as DT
+
+from tabulate import tabulate
 from random import randint
 from functools import reduce
 
@@ -57,9 +60,28 @@ class Team:
         tm = ''
         for a in self.attrs():
             if getattr(self, a) is not None:
+                player = getattr(self,a)
                # print(a, ' - ', getattr(self,a)[atr])
-                tm += a + ' - ' + getattr(self,a).Name +  '  -- ' + str(getattr(self,a).Salary) +'\n'
+                tm += a + ' - ' + player.Name +  '  -- ' + str(player.Salary) +'\n'
         print(tm)
+        
+    '''
+    formats a team to be printed as data in tabulate function
+    team data should be formatted: 
+        [(playerName, position, salary, stats?)]
+        just turn this thing into a tabulate
+    '''
+    def getData(self):
+        header = ['Position', 'Player', 'Salary']
+        data = []
+        for position in self.attrs():
+            if getattr(self, position) is not None:
+                player = getattr(self,position)
+                data.append([position, player.Name, str(player.Salary)])
+            else:
+                data.append([position, 'Empty', 0])
+            
+        return(tabulate(data, headers=header))
             
         '''
         MRCHEATSHEET - JOHNATHANS TOOL **********************************************************************************
@@ -91,7 +113,10 @@ class Team:
                 opn.append(a)
         return opn
             
-    def getOffensiveBudget(self):
+    '''
+    prints how much money is being spent on offense
+    '''
+    def getOffensiveSalary(self):
         b = 0
         for a in self.attrs():
             player = getattr(self,a)
@@ -99,6 +124,9 @@ class Team:
                 b += player.Salary
         return b
         
+    '''
+    Not too sure what this function is doing
+    '''
     def buildPD(self):
         df = pd.DataFrame()
         opn = self.getOpen()
@@ -200,6 +228,8 @@ class Team:
                 ret = False
         return ret
 
+
+
         
         
         
@@ -214,27 +244,27 @@ team = team.append(players.loc[players['Player'] == 'Mike Trout CF | LAA '])
 
 
     
-def randomTeam(teamName, budget):
+
+def randomTeam(teamName, budget, playerPool):
     ''' 
     Forms a random team that will be beneath a specified budget
-    -- budget fixed at $200 for now --
     
-    **currently just returns most expensive team possible**
+    
+    **currently gets next batter in csv if it can afford it**
     ''' 
     randTeam = Team(teamName)
     
-    pool = pd.read_csv('Positions.csv')
-    
-    for index, row in pool.iterrows():
+    for index, row in playerPool.iterrows():
         if randTeam.isComplete():
             return randTeam
-        batter = bat.makeBatter(row)
-        maxBid = budget - len(randTeam.getOpen())
-        if batter.Salary < maxBid:
+        batter = Batter.makeBatter(row)
+        maxBid = budget - len(randTeam.getOpen()) + 1
+        if batter.Salary <= maxBid:
             if randTeam.addBatter(batter):
                 budget = budget - batter.Salary
-                print('Added ' + batter.Name + 'for: ' + str(batter.Salary) + '   - New Max Bid: ' + str(maxBid - batter.Salary))
-    
+                playerPool = playerPool.drop(index)
+                #print('Added ' + batter.Name + 'for: ' + str(batter.Salary) + '   - New Max Bid: ' + str(budget + 1 - len(randTeam.getOpen())))
+                #print('$left: ' + str(budget) + '   - spots left: ' + str(randTeam.getOpen()))
     return randTeam
     
     
@@ -260,12 +290,20 @@ team, players = optimalTeam(200)
 
 '''
     
-b1 = bat.Batter('Arenado', [5], 499, 140, 100, 40, 100, 3, 41)
-b1.printPlayer()
+b1 = bat.Batter('Arenado', ['5'], 499, 140, 100, 40, 100, 3, 41)
+#b1.printPlayer()
+b2 = bat.Batter('Arenado', ['4'], 499, 140, 100, 40, 100, 3, 41)
+b3 = bat.Batter('Arenado', ['3'], 499, 140, 100, 40, 100, 3, 41)
+b4 = bat.Batter('Arenado', ['2'], 499, 140, 100, 40, 100, 3, 41)
+b5 = bat.Batter('Arenado', ['1'], 499, 140, 100, 40, 100, 3, 41)
 
 team1 = Team('Team1')
 team1.addBatter(b1)
-print(team1.printTeam())
+team1.addBatter(b2)
+team1.addBatter(b3)
+team1.addBatter(b4)
+team1.addBatter(b5)
+#print(team1.printTeam())
 
 '''
 def main():
