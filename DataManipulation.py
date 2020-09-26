@@ -198,3 +198,67 @@ def eval_input_fn(features, labels, batch_size):
     dataset = dataset.batch(batch_size)
     # Return the dataset.
     return dataset
+
+'''
+Takes a dataframe of batters and strips leading/ending white space form player names
+'''
+def stripNames(frame):
+    frame['Player'] = frame['Player'].apply(lambda x: x.strip())
+    
+    return frame
+
+
+'''
+Takes a Dataframe and resets the index
+It also adds/updates an "Index" column based on the new index values
+
+-- To be used after drafting a player
+'''
+def reIndex(frame):
+    ret = pd.DataFrame()
+    frame = frame.reset_index(drop=True)
+    for index, row in frame.iterrows():
+        row['Index'] = index
+        ret = ret.append(row)
+        
+    return ret
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

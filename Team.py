@@ -27,6 +27,13 @@ from tabulate import tabulate
 from random import randint
 from functools import reduce
 
+class TeamError(Exception):
+    '''base class for Team Errors'''
+    pass
+
+class NoPositionError(TeamError):
+    '''raised when attempting to access a non-existent attribute on Team'''
+    pass
 
 class Team:
     def __init__(self, Name, c1=None, c2=None, first=None, second=None, third=None, short=None, mid=None, cornr=None,
@@ -50,11 +57,19 @@ class Team:
     def attrs(self):
         return [a for a in dir(self) if not a.startswith('__') and not callable(getattr(self,a)) and a is not 'Name']
     
+    def isAttr(self,a):
+        if(a in self.attrs()):
+            return True
+        else:
+            raise NoPositionError
+    
     def get(self, atr):
-        return getattr(self, atr)
+        if(self.isAttr(atr)):
+            return getattr(self, atr)
     
     def set(self, atr, val):
-        return setattr(self, atr, val)
+        if(self.isAttr(atr)):
+            return setattr(self, atr, val)
     
     def printTeam(self, atr = 'Player'):
         tm = ''
@@ -151,11 +166,10 @@ class Team:
             print('Unable to find ' + batterName)
                 
         
+    '''
+    Adds a batter to the proper position 
+    '''
     def addBatter(self, batter):
-        '''
-        Adds a batter to the proper position 
-        '''
-        
         
         pos = batter.Pos
         ret = True
@@ -227,6 +241,19 @@ class Team:
             else:
                 ret = False
         return ret
+    
+    
+    '''
+    Drops the current player in the given position from the team
+        the position is now None    
+    '''
+    def dropBatter(self, position):
+        try:
+            self.set(position, None)
+        except:
+            print( 'No attribute (position): ' + position)             
+            
+        
 
 
 
@@ -240,7 +267,6 @@ class Team:
 team = pd.DataFrame()#columns = ['Player', 'AB', 'H', 'R', 'HR', 'RBI', 'SB', 'Sal'])
 team = team.append(players.loc[players['Player'] == 'Mike Trout CF | LAA '])
 '''
-
 
 
     
