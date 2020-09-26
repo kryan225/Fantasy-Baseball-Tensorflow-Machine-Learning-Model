@@ -19,13 +19,14 @@ TODO:
                 o Add new team xx
                 o Add player pool from csv xx
                 o Print teams xx
-                o Draft player
-                    ~ Make sure it affects player pool/drafted
+                o Draft player xx
+                    ~ Make sure it affects player pool/drafted xx
                     ~ Make sure when querying for index from user, to check proper range of indexes
-                        ex: cant give 15 when options are [6,88]
+                        ex: cant give 15 when options are [6,88] xx
                 o Print Rosters
                 o Find player
                     ~ If player is drafted return team, else return FA row
+                o re-write Team.
         - Want to adjust player pool when a player is drafted
             - will probably need to move League class to Team.py, 
             - so there can be a shared variable for player pool
@@ -139,6 +140,14 @@ class League:
         else:
             newTeam = Team(name)
             self.Teams[name] = (newTeam)
+        
+    '''
+    Print the data for every team in the league
+    '''
+    def printLeague(self):
+        for key, value in self.Teams.items():
+            print(value.getData())
+            print('-------------------------------------------\n')
             
             
     '''
@@ -154,7 +163,12 @@ class League:
         #If more than one player is returned by searching the name
         if len(player.index) > 1:
             print(player.to_string())
+            
             response = int(input("Which player do you want (Enter Index): "))
+            isValidInput = response in player.index 
+            while not isValidInput:                
+                response = int(input("Not valid index, please put index in range: "))
+                isValidInput = response in player.index 
             player = pool.iloc[response]
             print(player)
         elif len(player.index) < 1:
@@ -165,11 +179,13 @@ class League:
         bat = Batter.makeBatter(player)
         team.addBatter(bat)
         
-        #Now remove the batter from the player pool
+        #Now remove the batter from the player pool and add them to drafted
+        drafted = self.Drafted
         if(response >= 0):
             pool = pool.drop(response)
         else:
             pool = pool.drop(player.index[0])
+        self.Drafted = drafted.append(player).reset_index(drop=True)
         self.Fa_pool = pool.reset_index(drop=True)
         
         
