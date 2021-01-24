@@ -2,7 +2,7 @@ Following through the tutorial: https://www.youtube.com/watch?v=ovql0Ui3n_I&t=11
 
 To run a new server session:
     1. Open a conda prompt 
-    2. Navigate to E:/Github/Django-test/
+    2. Navigate to E:/Github/Fantasy-Baseball...
     3. 'pipenv shell'
     4. 'python manage.py runserver'
 Now go to the url and it will start
@@ -27,4 +27,3 @@ Ryan TODO: (1/23/2021)
     - Create a way to load in csv of projections to paste into DB
     - Show a leage in the UI 
     - Show a specific team in the UI (should pass team id through URL *look at deleteTodo*)
-    
