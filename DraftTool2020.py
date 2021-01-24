@@ -23,7 +23,8 @@ TODO:
                     ~ Make sure it affects player pool/drafted xx
                     ~ Make sure when querying for index from user, to check proper range of indexes
                         ex: cant give 15 when options are [6,88] xx
-                o Print Rosters
+                o Print Rosters xx
+                o Fill random league
                 o Find player
                     ~ If player is drafted return team, else return FA row
                 o re-write Team.
@@ -128,6 +129,15 @@ class League:
     def printTeams(self):
         for key in self.Teams:
             print(key)
+
+    '''
+    Returns a list of all the teams in the league
+    '''
+    def getTeams(self):
+        ret = []
+        for key in self.Teams:
+            ret.append(self.Teams[key])
+        return ret
     
     
     '''
@@ -145,9 +155,12 @@ class League:
     Print the data for every team in the league
     '''
     def printLeague(self):
+        x = 'nothing'
         for key, value in self.Teams.items():
+            x = value.getData()
             print(value.getData())
             print('-------------------------------------------\n')
+        return x
             
             
     '''
@@ -198,9 +211,10 @@ ll = League()
 ll.createFaPool('Positions.csv')
 print(len(ll.Fa_pool.index))
 ll.addTeam('mtTeam',None)
-ll.draftPlayer('Trout, Mike', 'mtTeam')
+#ll.draftPlayer('Trout, Mike', 'mtTeam')
 print(ll.Teams['mtTeam'].getData())
 print(len(ll.Fa_pool.index))
+
 
 
 
