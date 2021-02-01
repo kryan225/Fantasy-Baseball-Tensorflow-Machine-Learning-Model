@@ -38,7 +38,7 @@ test.html
     /sayHello html page
 
 
-Ryan TODO: (1/23/2021)
+Ryan TODO: (1/31/2021)
     Done:
     - Create DB schema to support python classes xxx
         - you will do this in models.py, can start by googling 'django models'
