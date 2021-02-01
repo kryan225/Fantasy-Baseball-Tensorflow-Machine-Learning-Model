@@ -58,9 +58,9 @@ class Batter():
               " SB: ", self.SB,
               " Sal: ", self.Salary)
         
-    def makeBatter(df):
-        '''
-        should take a single row of fantasy data from a dataframe and convert it into a batter object
-        '''
-        ret = Batter(df['Player'], df['Pos'], df['AB'], df['H'], df['R'], df['HR'], df['RBI'], df['SB'], df['R$'])
-        return ret
+def makeBatter(df):
+    '''
+    should take a single row of fantasy data from a dataframe and convert it into a batter object
+    '''
+    ret = Batter(df['Player'], df['Pos'], df['AB'], df['H'], df['R'], df['HR'], df['RBI'], df['SB'], df['R$'])
+    return ret

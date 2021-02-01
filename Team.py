@@ -283,7 +283,7 @@ def randomTeam(teamName, budget, playerPool):
     for index, row in playerPool.iterrows():
         if randTeam.isComplete():
             return randTeam
-        batter = Batter.makeBatter(row)
+        batter = bat.makeBatter(row)
         maxBid = budget - len(randTeam.getOpen()) + 1
         if batter.Salary <= maxBid:
             if randTeam.addBatter(batter):

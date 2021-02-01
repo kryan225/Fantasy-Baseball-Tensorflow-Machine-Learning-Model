@@ -1,0 +1,28 @@
+<h1>Lets add a batter</h1>
+
+
+
+<ul>
+    {% for batter_item in all_batters %}
+    <li>{{batter_item.name}}
+        <form action="/deleteBatter/{{batter_item.id}}" 
+            style="display: inline;" 
+            method = "post">{% csrf_token %}
+        <input type="submit" value="Delete"/>
+</form>
+    </li>
+    {%endfor%}
+</ul>
+
+<form action="/addBatter/" method = "post">{% csrf_token %}
+    name: <input type="text" name="name" value='first last' /><br>
+    pos: <input type="text" name="pos" value=-1 /><br>
+    ab: <input type="text" name="ab" value=-1 /><br>
+    h: <input type="text" name="h" value=-1 /><br>
+    r: <input type="text" name="r" value=-1 /><br>
+    rbi: <input type="text" name="rbi" value=-1 /><br>
+    hr: <input type="text" name="hr" value=-1 /><br>
+    sb: <input type="text" name="sb" value=-1 /><br>
+    salary: <input type="text" name="salary" value=0 /><br>
+    <input type="submit" value="Add"/><br>
+</form>
