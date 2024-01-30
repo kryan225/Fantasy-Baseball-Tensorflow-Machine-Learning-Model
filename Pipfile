@@ -6,7 +6,13 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-django = "==2.1"
+django = "*"
+requests = "*"
+pandas = "*"
+scikit-learn = "*"
+tensorflow = "*"
+matplotlib = "*"
+tabulate = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.11"

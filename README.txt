@@ -54,3 +54,22 @@ Ryan TODO: (1/31/2021)
         - This is broad, you can put on new page or from league view
     - {finish draft functionality}
     - Add data analysis, aka the smart draft options
+
+
+
+__________
+2024: 
+getting setup on new laptop: 
+install brew and add path to .zshrc: https://docs.python-guide.org/starting/install3/osx/#install3-osx
+brew install python
+brew install pipenv 
+sudo pip install virtualenv
+pipenv install django 
+pipenv install pandas 
+pipenv install scikit-learn
+pipenv install tensorflow
+pipenv install matplotlib 
+pipenv install tabulate 
+pipenv shell 
+    python manage.py migrate
+    python manage.py runserver (go to localhost/customBatter)
